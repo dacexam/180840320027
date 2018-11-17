@@ -1,22 +1,2 @@
 /* You can add global styles to this file, and also import other style files */
- @import "~bootstrap/dist/css/bootstrap.css";
- @import "~animate.css/animate.css";
-body{
-    margin: 0px;
-}
-
-.makecenter{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.makeleft{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center; 
-}
-.makeright{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center; 
-}
+@import '~bootstrap/dist/css/bootstrap.css'
