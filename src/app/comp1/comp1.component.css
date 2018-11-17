@@ -1,0 +1,16 @@
+.make-center{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.make-left{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.fonty{
+    font-size: 50px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+
+}

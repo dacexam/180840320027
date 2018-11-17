@@ -1,0 +1,72 @@
+  <!--header section-->
+<div class="container-fluid sticky-top">
+  <div class="row bg-success " style="height:80px">
+    <div class="col-4 fonty make-left text-light">
+      {{title}}
+    </div>
+    <div class="col-8 make-left">
+      <input [(ngModel)]="post" type="text" class="form-control form-control-lg" placeholder="Type Mumbai's Location Here...">
+      <button (click)="postHere()" class="ml-2 btn btn-lg btn-outline-light">
+        Search
+      </button>
+    </div>
+  </div>
+
+</div>
+<!--for post--> 
+<div class="container-fluid" *ngIf="postList.length>0" style="min-height:100px">
+  <div class="row" *ngFor="let item of postList">
+    <div class="col-2">
+    </div>
+    <div class="col-8" >
+        <div class="card mt-2">
+            <div class="card-body">
+              <h5 class="card-title make-center fonty">
+                {{item.post}}
+              </h5>
+              
+            </div>
+
+            <div class="card-footer text-muted">
+                <a href="#" class="btn btn-outline-success btn-sm" (click)="Like(item)">Like
+                    <span class="badge badge-light">{{item.Like}}</span>
+                </a>
+                <a href="#" class="ml-2 btn btn-outline-success btn-sm"  (click)="Dislike(item)">DisLike
+                      <span class="badge badge-light">{{item.Dislike}}</span>
+                </a>
+                <a href="#" class="ml-2 btn btn-outline-success btn-sm" (click)="Delete(item)">Delete
+                </a>
+                <a href="#" class="ml-2 btn btn-outline-success btn-sm" (click)="Edit(item)">Edit
+                  </a>
+                <!--<div class="row">
+                  <div class="col-8">
+                      <input [(ngModel)]="comment" type="text" class="form-control form-control-sm" placeholder="write comment Here...">
+                  </div>
+                  <div class="col-4">
+                    <button (click)="postComment(item)" class="ml-2 btn btn-sm btn-outline-light">
+
+                  </div>
+                </div>-->
+            </div>
+        </div>
+    
+    </div>
+    <div class="col-2">
+    </div>
+  </div>
+
+
+</div>
+
+<!--for empty block-->
+<div class="container-fluid" *ngIf="postList.length==0">
+  <div class="row bg-light mt-2 ">
+    <div class="col-2">
+    </div>
+    <div class="col-8 bg-success make-center fonty rounded text-light" style="min-height: 100px;">
+      No Search Found.
+    </div>
+    <div class="col-2">
+    </div>
+  </div>
+</div>
