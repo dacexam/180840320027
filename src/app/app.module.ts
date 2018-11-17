@@ -1,14 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-
 import { AppComponent } from './app.component';
-import { Cc1Component } from './cc1/cc1.component';
+import { Exam1Component } from './exam1/exam1.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    Cc1Component
+    Exam1Component
   ],
   imports: [
     BrowserModule,
