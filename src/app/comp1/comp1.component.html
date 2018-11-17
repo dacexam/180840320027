@@ -1,0 +1,53 @@
+<div class="container-fluid sticky-top">
+  <div class="row bg-dark" style="height:55px">
+      <div class="col-3 make-left text-light fontify">
+        {{title}}
+        </div>
+        <div class="col-6 make-center fontify">
+          <input [(ngModel)]="post" type="text" class="form-control form-control-lg" placeholder="Write Something...">
+          <button (click)="postHere()" type="button" class=" ml-2 btn btn-secondary">Post Here</button> 
+        </div>
+  </div>
+</div>
+
+<div class="container-fluid" *ngIf="postlist.length >0 ">
+  <div class="row mt-1" *ngFor="let item of postlist"> 
+    <div class="col-3"></div> 
+      <div class="col-6">
+        <div class="card">
+          <div class="card-body make-center h1 rounded text-light fontify bg-dark" style="height:200px">
+            <h1 class="card-title text-capitalize">
+              {{item.post}}  
+            </h1>  
+          </div>  
+          <div class="card-footer text-light">
+            <a href="#" (click)="likeCount(item)" class="btn btn-sm btn-secondary ml-1">Like
+              <span class="badge badge-light">{{item.like}}</span>
+            </a> 
+            <a href="#" (click)="dislikeCount(item)" class="btn btn-sm btn-secondary ml-1">Dislike
+                <span class="badge badge-light">{{item.dislike}}</span>
+            </a> 
+            <a href="#" (click)="delete(item)" class="btn btn-sm btn-secondary ml-1">Delete Post
+                
+            </a> 
+            <a href="#" (click)="commentHere(item)" class="btn btn-sm btn-secondary ml-1">Comment
+                
+              </a> 
+            
+          </div>
+        </div>
+      <div >
+    <div class="col-3"></div> 
+
+  </div> 
+</div>
+
+<div class="container-fluid" *ngIf="postlist.length==0">
+  <div class="row mt-1">
+    <div class="col-3"></div>
+    <div class="col-6 make-center bg-dark text-light h5 rounded fontify" style="height:200px">
+      No post Available
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>
