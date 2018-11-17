@@ -1,88 +1,89 @@
-<div class="container-fluid">
-    <div class="row bg-info" style="height:50px;">
-      <div class="col-3 text-danger fairnhandsome make-left">
-        HOTMAIL
-  
-      </div>
-  
-      <div class="col-6 make-center">
-  
-        <input [(ngModel)]="abcd" type="text" class="form-control form-control-lg" placeholder="say something...">
-        <button (click)="posthere();" class="btn btn-sm ml-1">POST</button>
-  
-      </div>
-  
-      <div class="col-3">
-  
-      </div>
-  
+<div class="container-fluid sticky-top">
+  <div class="row bg-info" style="height:70px;font-weight: bolder ;font-size:30px;color: whitesmoke ;font-family: 'Courier New', Courier, monospace;">
+    <div class="col-3 makeleft">
+        {{title}}
     </div>
-  </div>
-  
-  <div class="container-fluid" *ngIf="values.length==0">
-    <div class="row">
-      <div class="col-3"></div>
-      <div class="col-6 make-center fairnhandsome">
-        No Post Availaible
-      </div>
-  
-    </div>
-  
-  </div>
-  
-  
-  <div class="container-fluid mt-1">
-      <div class="row mt-1" *ngFor="let item of values">
-    
-        <div class="col-3"></div>
-    
-        <div class="col-6 bg-dark rounded">
-    
-          <div class="row make-center fairnhandsome text-light"  style="min-height:150px;">
-            {{item.data}}
-          </div>
-  
-          <div class="row border">
-            <div class="col make-center">
-                <button (click)="increaselike(item);" class="btn btn-sm"> LIKE  <span class="ml-1 badge badge-light">{{item.like}}</span> </button>
-            </div>
-            <div class="col make-center">
-                <button (click)="dislike(item);" class="btn btn-sm"> DISLIKE  <span class="ml-1 badge badge-light">{{item.dislike}}</span> </button>
-            </div>
-            
-  
-            
-            <div class="col make-center">.<div class="placeholder"place hld></div>
-                <button  class="btn btn-sm"> EDIT   </button>
-            </div>
-              <div class="col make-center">
-              <button (click)="del(item);" class="btn btn-sm"> DELETE </button>
-
-            </div>
-          </div>/
-          
-          <div class="row mt-1">
-            
-              <div class="col make-center">
-                  <input [(ngModel)]="variable" type="text" class="form-control form-control-sm" placeholder="comment here...">
-                  <button (click)="comment(item);" class="btn btn-sm ml-1"> COMMENT  <span class="ml-1 badge badge-light">{{item.comcount}}</span> </button>
-              <button (click)="comment(item);"class="btn btn-sm m1-1
-                </div>
-          </div>
-  
-  
-          <div class="row mt-1 text-light " *ngFor="let val of item.comm"></div>
-         
-           <p> {{val}} </p> <a href="#" (click)="delcomm(item,val);" class="ml-5 text-danger">Delete</a>
-           
-          </div>
-      
-  
-        </div>
+    <div class="col-6 makeleft animated tada">
+        <input type="text" [(ngModel)]="post" placeholder="Enter something to post..." class="form form-control form-control-lg">
         
-        <div class="col-3"></div>
-    
-      </div>
-      
-    
+        <button class="btn btn-light btn-lg ml-2 animated bounce" (click)="postHere()">Post</button>
+       
     </div>
+    <div class="col-3 "></div>
+  </div>
+</div>
+
+<div class="container-fluid" *ngIf="postList.length>0" >
+  <div class="row" *ngFor="let item of postList">
+    <div class="col-3"></div>
+
+    
+    <div class="col-6 make-center mt-2 " >
+        
+     
+        <div class="card animated tada" style="width:100% ; min-height: 100px;" >
+            <div class="card-body make-center " style="height: 150px;" >
+                <div class="title postText text-dark">
+                   {{item.post}}
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="#" class="btn btn-sm btn-secondary" (click)="likeCount(item)">Like 
+                  <span class="badge badge-light">{{item.like}}</span></a>
+                  
+                <a href="#" class="btn btn-sm btn-secondary ml-2" (click)="dislikeCount(item)">Dislike 
+                  <span class="badge badge-light">{{item.dislike}}</span></a>
+
+                <a href="#" class="btn btn-sm btn-secondary ml-2"(click)="deletepost(item)">Delete</a>
+                <a href="#" class="btn btn-sm btn-secondary ml-2" (click)="postComment(item)">Comment</a>
+                <a href="#" class="btn btn-sm btn-secondary ml-2" (click)="edit(item)">Edit Post</a>
+
+                
+                <div name="comment-box " class="mt-2 make-left" *ngIf="item.addcomment">
+                  <div name="comment-input">
+                    <textarea [(ngModel)]="item.commentText"  placeholder="enter comment" style="width:100%;" rows="3"></textarea>
+                    <a href="#" class="btn btn-sm btn-secondary ml-2" (click)="addComment(item)">Add</a>
+                    
+                    </div>
+                </div>
+
+                <div name="comment-display" *ngIf="item.commentList.length > 0">
+                    <div *ngFor="let commentItem of item.commentList" class="border mt-2 bg-info" >
+                        {{commentItem}}
+                    <div>
+                       <a href="#" (click)="deleteComment(item)" class="btn btn-secondary btn-sm">Delete</a> 
+                    </div>
+                  </div>
+                </div>
+               
+
+
+
+               
+                <div name="edit-post-box " class="mt-2 make-left" *ngIf="item.editpost">
+                    <div name="edit-post-input">
+                      <textarea [(ngModel)]="item.post"  style="width:100%;" rows="3"></textarea>
+                      <a href="#" class="btn btn-sm btn-secondary ml-2" (click)="editPost(item)">Add</a>
+                      
+                      </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-3"></div>
+  </div>
+</div>
+
+<div class="container-fluid" *ngIf="postList.length == 0"> 
+  <div class="row mt-2" style="height:80px;">
+    <div class="col-3"></div>
+
+    <div class="col-6  textify makecenter" style="background:pink" >
+        No Posts Available to Show...
+    </div>
+
+  </div>
+</div>
+
+

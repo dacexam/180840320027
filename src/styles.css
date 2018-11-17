@@ -1,21 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.css";
-
-.fairnhandsome{
-    font-weight: bold;
-    font-family: cursive;
-    font-size: x-large;
-    font-style: italic;
+ @import "~bootstrap/dist/css/bootstrap.css";
+ @import "~animate.css/animate.css";
+body{
+    margin: 0px;
 }
 
-.make-center{
+.makecenter{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
-.make-left{
+.makeleft{
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: center; 
+}
+.makeright{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; 
 }
