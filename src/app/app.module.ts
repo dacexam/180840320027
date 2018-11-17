@@ -3,16 +3,15 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { LovelyComponent } from './lovely/lovely.component';
+import { MycompoComponent } from './mycompo/mycompo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LovelyComponent
+    MycompoComponent
   ],
   imports: [
-    BrowserModule ,
-    FormsModule
+    BrowserModule,FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
