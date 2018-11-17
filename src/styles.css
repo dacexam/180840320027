@@ -1,22 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap\dist\css\bootstrap.css";
-
-body{
-    margin:0px;
-}
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~animate.css";
 
 .make-center{
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .make-left{
     display: flex;
-    justify-content:left;
+    justify-content: left;
     align-items: center;
 }
-.make-right{
-    display: flex;
-    justify-content:right;
-    align-items: center;
+
+.beautify{
+    font-size: 35px;
+    font-family: initial;
+}
+
+body{
+    margin: 0px;
+    background-color:rgb(231, 227, 227);
 }

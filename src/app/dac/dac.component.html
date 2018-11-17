@@ -1,0 +1,77 @@
+<div class="container-fluid sticky-top">
+    <div class="row bg-info" style="height:70px;">
+      <div class="col-3 text-light make-left beautify" >
+        {{title}}
+      </div>
+      <div class="col-6 make-center ">
+        <input [(ngModel)]="post" type="text" placeholder="say something..." class="form-control form-control-lg">
+      </div>
+      <button (click)="postHere()" type="button" class="btn btn-sm btn-light make-center" style="font-family:bold">POST HERE</button>
+    </div>
+</div>
+  
+  <div class="container-fluid animated bounceIn" *ngIf="postList.length > 0">
+    <div class="row mt-2" *ngFor="let item of postList">
+      <div class="col-3"> </div>
+        <div class="col-6">
+          <div class="card text-muted-fontify">
+            <div class="card-body text-muted-fontify">
+                <h5 class="title text-muted make-center">
+                  {{item.post}}
+                </h5>
+            </div>
+            <div class="card-footer ">
+              <a href="#" (click)="likeCount(item)" class="btn btn-info ml-2" >LIKE
+                <span class="badge badge-light">{{item.like}}</span>
+              </a>
+  
+              <a href="#" (click)="dislikeCount(item)"class="btn btn-info ml-2" >DISLIKE
+                <span class="badge badge-light">{{item.dislike}}</span>
+              </a>
+              <a href="#" (click)="deletePost(item)"class="btn btn-info ml-2" >DELETE
+                <span class="badge badge-light">{{item.delete}}</span>
+              </a>
+              <a href="#" (click)="editpost(item)"class="btn btn-info ml-2" >UPDATE
+                <span>{{item.update}}</span>
+              </a>
+              <input [(ngModel)]="updatee" type="text" placeholder="edit here..." class="form-control form-control-lg mt-1"> 
+              <input [(ngModel)]="comment" type="text" class="form-control mt-1" placeholder="write comment..">
+              <a href="#" (click)="commenthere(item)" type="button" class="mt-1 ml-1 btn btn-info">
+                COMMENT
+              </a> 
+            </div>
+            <div class="container-fluid">
+              <div class="row" *ngFor="let i of item.commentList">
+              <div class="col-6 make-center">
+                  <a href="#" (click)="deleteComment(item,i)" class="btn btn-info ml-2">delete comment 
+                      {{item.delete}}
+                  </a>
+                  <a href="#" (click)="editComment(item)" class="btn btn-info ml-2">edit 
+                        {{item.edit}}
+                  </a>
+              </div>
+
+            <div class="col-6">
+                <div class="card mt-1">
+                <div class="card-body make-center" style="height: 100px;">
+                  <h5 class="card-title">
+                    {{i}}
+                  </h5>
+                </div>
+
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+  <div class="container-fluid" *ngIf="postList.length == 0">
+    <div class="row mt-2" style="height:150px;"> 
+      <div class="col-3"></div>
+      <div class="col-6 text-light bg-info make-center beautify">
+        NO POSTS AVAILABLE
+      </div>
+    </div>
+  </div>
