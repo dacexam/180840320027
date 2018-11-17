@@ -1,13 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/Forms';
+
 import { AppComponent } from './app.component';
-import { Exam1Component } from './exam1/exam1.component';
+import { HeaderComponent } from './header/header.component';
+//import { BodyComponent } from './body/body.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    Exam1Component
+    HeaderComponent,
+    //BodyComponent
   ],
   imports: [
     BrowserModule,
