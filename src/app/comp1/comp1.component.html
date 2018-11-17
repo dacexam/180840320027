@@ -1,53 +1,82 @@
-<div class="container-fluid sticky-top">
+<div class="container-fliuid sticky-top">
   <div class="row bg-dark" style="height:55px">
-      <div class="col-3 make-left text-light fontify">
-        {{title}}
-        </div>
-        <div class="col-6 make-center fontify">
-          <input [(ngModel)]="post" type="text" class="form-control form-control-lg" placeholder="Write Something...">
-          <button (click)="postHere()" type="button" class=" ml-2 btn btn-secondary">Post Here</button> 
-        </div>
-  </div>
-</div>
-
-<div class="container-fluid" *ngIf="postlist.length >0 ">
-  <div class="row mt-1" *ngFor="let item of postlist"> 
-    <div class="col-3"></div> 
-      <div class="col-6">
-        <div class="card">
-          <div class="card-body make-center h1 rounded text-light fontify bg-dark" style="height:200px">
-            <h1 class="card-title text-capitalize">
-              {{item.post}}  
-            </h1>  
-          </div>  
-          <div class="card-footer text-light">
-            <a href="#" (click)="likeCount(item)" class="btn btn-sm btn-secondary ml-1">Like
-              <span class="badge badge-light">{{item.like}}</span>
-            </a> 
-            <a href="#" (click)="dislikeCount(item)" class="btn btn-sm btn-secondary ml-1">Dislike
-                <span class="badge badge-light">{{item.dislike}}</span>
-            </a> 
-            <a href="#" (click)="delete(item)" class="btn btn-sm btn-secondary ml-1">Delete Post
-                
-            </a> 
-            <a href="#" (click)="commentHere(item)" class="btn btn-sm btn-secondary ml-1">Comment
-                
-              </a> 
-            
-          </div>
-        </div>
-      <div >
-    <div class="col-3"></div> 
-
-  </div> 
-</div>
-
-<div class="container-fluid" *ngIf="postlist.length==0">
-  <div class="row mt-1">
-    <div class="col-3"></div>
-    <div class="col-6 make-center bg-dark text-light h5 rounded fontify" style="height:200px">
-      No post Available
+    <div class="col-3 make-left text-light">
+      DacBook
     </div>
+    <div class="col-6 make-center">
+      <input [(ngModel)]="post" type="text" class="form-control form-control-lg" placeholder="say something...">
+    </div>
+    <div class="col-3">
+      <button (click)="posthere()" class=" make-center btn btn-outline-light  ">post here</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="container-fluid" *ngIf="postList.length > 0">
+<div class="row mt-2" *ngFor="let item of postList">
+  <div class="col-3"></div>
+
+  <div class="col-6">
+    <div class="card">
+      
+      <div class="card-body">
+        <h5 class="make-center fontify" style="height:150px">
+       {{item.post}}
+        </h5>
+      </div>
+
+      <div class="card-footer">
+        <button  (click)="like(item)" class="btn btn-outline-dark">like
+          <span class="badge badge-light">{{item.like}}</span>
+        </button>
+
+        <button (click)="dislike(item)" class="btn btn-outline-dark ml-2">dislike
+            <span class="badge badge-light">{{item.dislike}}</span>
+          </button>
+
+          <button (click)="delete1(item)" class="btn btn-outline-dark ml-2">
+              delete
+            </button>
+
+          <button (click)="update(item)" class="btn btn-outline-dark ml-2">
+            edit post
+          </button>
+          <input [(ngModel)]="item.update1" type="text" class="form-control form-control-lg mt-2" placeholder="edit here...">
+      </div>
+
+      <div class="card-body">
+        <div class="row">
+            <input [(ngModel)]="com" type="text" class="form-control form-control-lg mt-2" placeholder="comment here...">
+            <button (click)="comment(item)" class="mt-1 btn btn-outline-dark ml-2">
+               comment
+              </button>
+          </div>
+
+        <div class="row" *ngFor="let val of item.comm">
+         <p>{{val}}</p> 
+          <a href="#" (click)="commdel(item,val)" class="ml-5 text-danger">delete</a>
+          <a href="#" (click)="commup(item,val)" class="ml-5 text-dark">update</a>
+          <input [(ngModel)]="item.comm.com1" type="text" class="form-control form-control-lg mt-2" placeholder="edit comment here...">
+        </div>
+
+
+        
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-3"></div>
+</div>
+</div>
+
+<div class="container-fliuid" *ngIf="postList.length == 0">
+  <div class="row mt-2">
     <div class="col-3"></div>
+    <div class="col-6 bg-dark text-light make-center" style="height:150px">
+      No Post Avilable
+    </div>
+<div class="col-3"></div>
   </div>
 </div>
