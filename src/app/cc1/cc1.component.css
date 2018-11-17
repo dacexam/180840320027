@@ -1,0 +1,15 @@
+.make-center{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input1{
+    height:40px;
+    width: 400px;
+}
+
+.input2{
+    height:40px;
+    width: 100%;
+}
