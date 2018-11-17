@@ -1,107 +1,99 @@
-<header class="bg-dark">
-  <div class="container-fluid">
-    <div class="row text-light">
-      <div class="col-3 make-left">
-        <h5 class="mb-0">{{title}}</h5>
+
+<div class="container-fluid" >
+    <div class="row bg-primary" style="height:60px;">
+      <div class="col-3 h3 text-light make-left" >
+        {{title}}
       </div>
       <div class="col-6 make-center">
-        <input type="text" placeholder="Post here..." class="form-control form-control-lg mr-2" [(ngModel)]="postRef">
-        <button type="button" class="btn btn-secondary" (click)="postMsg()">Post Here</button>
+        <input [(ngModel)]="post" type="text" class="form-control " placeholder="say something....">
+        <button (click)="postHere()" type="button" class="ml-1 btn btn-secondary"> post</button>
+        
+      </div>
+     <div class="col-3">
+        
       </div>
     </div>
-  </div>
-</header>
+</div>
 
-<div class="main pt-3">
-  <div class="container-fluid" *ngIf="postList.length == 0">
+<div class="container-fluid" *ngIf="postList.length==0">
     <div class="row">
-      <div class="col-3"></div>
-      <div class="col-6 bg-secondary text-light make-center no-post">
-        <h3>No Post Available</h3>
-      </div>
-    </div>
-  </div>
-
-  <div class="container-fluid" *ngIf="postList.length > 0">
-    <div class="row mb-3" *ngFor="let item of postList">
-      <div class="col-3"></div>
-
-      <div class="col-6">
-        <div class="card">
-          <div class="card-body">
-            <div class="card-title make-center">
-              <h1 class="text-muted text-capitalize">{{item.data}}</h1>
-            </div>
-          </div>
-          <div class="card-footer">
-            <div class="row">
-              <div class="col-4">
-                <button type="button" class="btn btn-sm btn-secondary mr-2" (click)="like(item)">
-                  LIKE <span class="badge badge-light">{{item.likes}}</span>
-                </button>
-                <button type="button" class="btn btn-sm btn-secondary" (click)="dislike(item)">
-                  DISLIKE <span class="badge badge-light">{{item.dislikes}}</span>
-                </button>
-              </div>
-
-              <div class="col-5"></div>
-
-              <div class="col-3">
-                <div class="button-group">
-                  <button type="button" class="btn btn-sm btn-secondary mr-2" (click)="edit(item)">
-                    EDIT
-                  </button>
-                  <button type="button" class="btn btn-sm btn-secondary" (click)="delete(item)">
-                    DELETE
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="row mt-2" *ngIf="item.editflag">
-              <div class="col-12 make-center">
-                <input type="text" class="form-control mr-2" [(ngModel)]="item.editPostRef">
-                <button type="button" class="btn btn-secondary btn-sm mr-2" (click)="saveMsg(item)">Save</button>
-                <button type="button" class="btn btn-secondary btn-sm" (click)="canceleditMsg(item)">Cancel</button>
-              </div>
-            </div>
-          </div>
-          <div class="card-footer">
-            <div class="row">
-              <div class="col-12 make-center">
-                <textarea class="form-control mr-3" [(ngModel)]="item.commentRef"></textarea>
-                <button type="button" class="btn btn-sm btn-secondary" (click)="addcomment(item)">
-                  COMMENT <span class="badge badge-light">{{item.commentcount}}</span>
-                </button>
-              </div>
-            </div>
-
-            <div class="comment-display" *ngIf="item.commentList.length > 0">
-              <div *ngFor="let commentItem of item.commentList">
-                <div class="row" *ngIf="!commentItem.editflag">
-                  <div class="col-9">
-                    <p class="mb-0">{{commentItem.data}}</p>
-                  </div>
-                  <div class="col-3">
-                    <div class="button-group">
-                      <button class="btn btn-sm btn-secondary mr-2" (click)="editcomment(commentItem)">Edit</button>
-                      <button class="btn btn-sm btn-secondary" (click)="deletecomment(commentItem, item)">Delete</button>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row" *ngIf="commentItem.editflag">
-                  <div class="col-12 make-center">
-                    <input type="text" class="form-control mr-2" [(ngModel)]="commentItem.editdata">
-                    <button type="button" class="btn btn-secondary btn-sm mr-2" (click)="saveComment(commentItem)">Save</button>
-                    <button type="button" class="btn btn-secondary btn-sm" (click)="canceleditComment(commentItem)">Cancel</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="col-3"> </div>
+      <div class="col-6 h1 rounded bg-secondary mt-1 make-center text-light" style="height:200px;">
+        No post available
         </div>
-      </div>
+        <div class="col-3"></div>
     </div>
+</div>
+
+
+<div class="container-fluid" *ngIf="postList.length > 0">
+  <div class="row" *ngFor="let item of postList"style="min-height:100px;">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <div class="card mt-1" >
+                <div class="card-body make-center " style="background:rgb(96, 151, 253)">
+                  <h5 class="card-title h1">
+                    {{item.post}}
+                  </h5>
+                </div>
+
+        <div class="card-footer">
+                <a href="#" (click)="likeCount(item)" class="btn btn-secondary ">Like
+              {{item.like}} 
+              </a>
+
+              <a href="#" (click)="dislikeCount(item)" class="btn btn-secondary ml-2">dislike
+                {{item.dislike}}
+              </a>
+
+              <a href="#" (click)="deletePost(item)" class="btn btn-secondary ml-2">Delete post
+                {{item.delete}}
+              </a>
+           
+           
+            <div class="make-center mt-1">
+                <input [(ngModel)]="comment" type="text" class="form-control ml-1 " placeholder="write comment"> 
+                <a href="#" (click)="commenthere(item)" type="button" class="ml-1 btn btn-secondary "> comment
+                </a>
+            </div>
+
+            <div class="make-center mt-1">
+                <input [(ngModel)]="item.edit" type="text" class="form-control ml-1 " placeholder="update from here"> 
+                <a href="#" (click)="editpost(item)" type="button" class="ml-1 btn btn-secondary "> editpost
+                </a>
+            </div>
+
+
+            <div class="container-fluid" >
+              <div class="row" *ngFor="let i of item.commentList">
+                <div class="col-6 make-center"> 
+                    <a href="#" (click)="deleteComment(item,i)" class="btn btn-secondary ml-2">Delete comment
+                        {{item.delete}}
+                      </a>
+                      <input [(ngModel)]="i.edit1" type="text" class="form-control ml-1 " placeholder="update from here"> 
+                      <a href="#" (click)="editcomment(i)" class="btn btn-secondary ml-2">edit
+                        
+                        </a>
+                </div>
+                <div class="col-6">
+                    <div class="card mt-1">
+                      <div class="card-body make-center " style="height:10px;">
+                        <h5 class="card-title" >
+                          {{i}}
+                        </h5>
+                      </div>
+
+
+            </div>
+        </div>
+
+
+
+      </div>
+      <div class="col-3">
+      </div> 
   </div>
 </div>
+
+
+

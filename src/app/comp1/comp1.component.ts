@@ -1,110 +1,69 @@
 import { Component, OnInit } from '@angular/core';
+import { isNgTemplate } from '@angular/compiler';
 
 @Component({
   selector: 'app-comp1',
   templateUrl: './comp1.component.html',
   styleUrls: ['./comp1.component.css']
 })
-export class Comp1Component implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  title = "DACBOOK";
-  postRef = '';
+export class Comp1Component{
+  title = 'DACBOOK';
+  post = '';
   postList = [];
+  comment = '';
+  edit = '';
+  edit1 = '';
+  
 
-  postMsg() {
-    if (this.postRef.trim().length == 0) {
-      alert("Post cannnot be empty!");
-    } else {
-      const post = {};
-      post['data'] = this.postRef;
-      post['likes'] = 0;
-      post['dislikes'] = 0;
+  postHere() {
+    const postObject = {};
+    postObject['like'] = 0;
+    postObject['dislike'] = 0;
+    postObject['post'] = this.post;
+    postObject['commentList'] = [];
+    if(this.post!=''){
+    this.postList.splice(0, 0, postObject);
 
-      post['editflag'] = false;
-      post['editPostRef'] = this.postRef;
-
-      post['commentcount'] = 0;
-      post['commentList'] = [];
-      post['commentRef'] = '';
-
-      this.postList.splice(0, 0, post);
-    }
-    this.postRef = '';
-  }
-
-  like(obj) {
-    obj['likes'] += 1;
-  }
-
-  dislike(obj) {
-    obj['dislikes'] += 1;
-  }
-
-  edit(obj) {
-    obj['editflag'] = true;
-  }
-
-  saveMsg(obj) {
-    if (obj['editPostRef'].trim().length == 0) {
-      alert("Post cannnot be empty!");
-    } else {
-      obj['data'] = obj['editPostRef'];
-      obj['editflag'] = false;
+    this.post = '';
     }
   }
 
-  canceleditMsg(obj) {
-    obj['editPostRef'] = obj['data'];
-    obj['editflag'] = false;
+  commenthere(item){
+  const index=this.postList.indexOf(item);
+    item.commentList.splice(index,0,this.comment);
+    this.comment = '';
   }
 
-  delete(obj) {
-    let i = this.postList.indexOf(obj);
-    this.postList.splice(i, 1);
+  likeCount(item) {
+    item.like += 1;
   }
 
-  addcomment(obj) {
-    if (obj.commentRef.trim().length == 0) {
-      alert("Comment cannnot be empty!");
-    } else {
-      const comment = {
-        data: obj.commentRef,
-        editdata: obj.commentRef,
-        editflag: false
-      }
+  dislikeCount(item) {
+    item.dislike += 1;
+  }
 
-      obj['commentList'].push(comment);
-      obj['commentcount'] += 1;
-      obj['commentRef'] = '';
+  deletePost(item){
+    let index=this.postList.indexOf(item);
+    this.postList.splice(index,1);
+  } 
+
+  deleteComment(item,j){
+    let index=item.commentList.indexOf(j);
+
+    item.commentList.splice(index,1);
+  }
+
+    editpost(item){
+      item.post=item.edit;
+      item.edit='';
+ 
     }
-  }
-
-  editcomment(obj) {
-    obj.editflag = true;
-  }
-
-  saveComment(obj) {
-    if (obj.editdata.trim().length == 0) {
-      alert("Comment cannnot be empty!");
-    } else {
-      obj['data'] = obj['editdata'];
-      obj.editflag = false;
+  
+    editcomment(i){
+      i.comment=i.edit1;
+      i.edit1='';
+      
+      
     }
-  }
-
-  canceleditComment(obj) {
-    obj['editdata'] = obj['data'];
-    obj.editflag = false;
-  }
-
-  deletecomment(obj1, obj2) {
-    let i = obj2.commentList.indexOf(obj1);
-    obj2.commentList.splice(i, 1);
-    obj2['commentcount'] -= 1;
-  }
+    
 }
