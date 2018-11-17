@@ -1,19 +1,16 @@
-.make-center{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+header .row { height: 60px;}
+
+.no-post { height: 175px; }
+
+textarea { height: 45px; }
+
+.button-group { float: right; }
+
+.comment-display {
+    margin-top: 10px;
 }
 
-.make-left{
-    display: flex;
-    justify-content: left;
-    align-items: center;
-}
-
-.fontify{
-    
-    font-weight:bold;
-    font-family: 'Times New Roman', Times, serif ;
-    font-style: italic;
-    font-size: 35px
+.comment-display .row {
+    padding: 8px 0;
+    border-top: 1px dotted grey;
 }
