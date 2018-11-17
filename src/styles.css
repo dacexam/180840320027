@@ -1,19 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
-@import '../node_modules/bootstrap/dist/css/bootstrap.css';
+@import "~bootstrap\dist\css\bootstrap.css";
 
-
-.make-center{
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+body{
+    margin:0px;
 }
 
-.make-left{
-
+.make-center{
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
-    
+}
+.make-left{
+    display: flex;
+    justify-content:left;
+    align-items: center;
+}
+.make-right{
+    display: flex;
+    justify-content:right;
+    align-items: center;
 }

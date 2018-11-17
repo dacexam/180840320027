@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { isNgTemplate } from '@angular/compiler';
 
 @Component({
   selector: 'app-comp1',
@@ -8,36 +7,55 @@ import { isNgTemplate } from '@angular/compiler';
 })
 export class Comp1Component  {
 
+  title='DacBook';
   post='';
-  postList=[];
+  List=[];
+  edit='';
+  comment='';
+  commentarr=[];
 
-  posthere()
-  {
-     const postObject={};
-     postObject['like']=0;
-     postObject['dislike']=0;
-     postObject['post']=this.post;
-     this.postList.splice(0,0,postObject);
-     this.post='';
+  posthere(){
+    const postObj={};
+    postObj['like']=0 ;
+    postObj['dislike']=0;
+    postObj['post']=this.post;
+
+    this.List.splice(0,0,postObj);
+    this.post='';
+
+    
+  }
+
+  likecnt(i){
+    i.like=1+i.like;
+  }
+  
+  
+
+  dislikecnt(i){
+    i.dislike=1+i.dislike;
+  }
+
+  del(i){
+    this.List.splice(this.List.indexOf(i),1);
+ }
+
+  editit(i){
+    this.post=this.edit;
+    this.edit='';
+  }
+
+  commenthere(i1){
+    this.commentarr[i1]=this.comment;
+    this.comment='';
 
   }
-  likeCount(item)
-     {
-        item.like +=1;
 
-     }
+  delcmt(i1){
 
-     dislikeCount(item)
-     {
-      item.dislike +=1;
-      
-     }
-  
-
-
-
-
-  
-  
+  }
+  editcmt(i1){
+    
+  }
 
 }

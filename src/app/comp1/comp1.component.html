@@ -1,48 +1,65 @@
-<div class="container-fluid" >
-  <div class="row bg-primary" style="height:50px">
+<div class="container-fluid sticky-top">
+  <div class="row bg-info" style="height:70px">
+    <div class="col-3 fontify">
+      {{title}}
+    </div>
+    <div class="col-6">
+      <input type="text" [(ngModel)]="post" class="form-control form-control-lg mt-2"placeholder="Write Something here....">
+
+    </div>
     <div class="col-3">
-      <span style="font-size:30px">facebook</span>
-
+      <button (click)="posthere()" class="btn btn-form-control-sm mt-3">Post here</button>
     </div>
-    <div class="col-6 make-center" >
-      <input [(ngModel)]="post" type="text"class="form-control form-control-lg" placeholder="post here...">
-    </div>
-    <div class="col-3 make-left">
-      <button (click)="posthere()" type="button" class="btn btn-sm btn-secondary">post here
-
-      </button>
-
-    </div>
-
-  </div>
-</div>
-
-<div class="container-fluid mt-1" *ngIf ="postList.length > 0" >
-  <div class="row mt-1" style="height:80px" *ngFor ="let item of postList">
-  
-    <div class="col-3"></div>
-    <div class="col-6 ">
-      <div class="card bg-primary">
-        <div class="card-body make-center text muted" style="min-height:100px">
-          <h5 class="card-title">
-            {{item.post}}
-
-          </h5>
-
-        </div>
-        <div class="card-foter text-muted">
-          <a href="#" (click)="likeCount(item)" class=" btn btn-sm btn-secondary">LIKE 
-            <span class="badge" >{{item.like}}</span>
-          </a>
-
-          <a href="#" (click)="dislikeCount(item)" class=" ml-1 btn btn-sm btn-secondary">DISLIKE
-              <span class="badge" >{{item.dislike}}</span>
-            </a>
-  
-
-        </div>
-      </div>
     
+  </div>
+
+</div>
+<div class="container-fluid" *ngIf="List.length>0"> 
+  <div class="row mt-1 " style="min-height:150px" *ngFor="let i of List">
+    <div class="col-3">
+     
+    </div>
+    <div class="col-6 bg-info rounded">
+      <div class="row bg-secondary rounded" style="height:100px">
+        <div class="col-12 make-center f2">
+          {{i.post}}
+
+        </div>
+
+      </div>
+      <div class="row"   style="height:40px">
+        <div class="col-2">
+          <button class="btn  form-control-sm mt-2" (click)="likecnt(i)">Like<span class="badge badge-light">{{i.like}}</span> </button>
+        </div>
+        <div class="col-2">
+            <button class="btn   form-control-sm mt-2" (click)="dislikecnt(i)">Dislike<span class="badge badge-light">{{i.dislike}}</span> </button>
+        </div>
+        <div class="col-2">
+            <button class="btn   form-control-sm mt-2" (click)="editit(i)">Edit</button>
+            
+        </div>
+        
+        <div class="col-4 make-center">
+          <input type="text" class="form-cntrol-lg mt-2 " placeholder="comment...">
+            <button class=" ml-1 btn btn-block form-control-sm  mt-2" (click)="commentarr(i)">Add</button>
+        </div>
+        <!--<div class="row " >
+          <div class="col-3">
+
+          </div>
+          <div class="col-6">
+
+          </div>
+          <div class="col-3">
+
+          </div>
+          </div>-->
+
+        <div class="col-2">
+            <button class="btn   form-control-sm mt-2"  (click)="del(i)">Delete</button>
+        </div>
+
+      </div>
 
     </div>
     <div class="col-3">
@@ -52,20 +69,18 @@
   </div>
 
 </div>
+<div class="container-fluid" *ngIf="List.length ==0">
+<div class="row mt-1" style="height:150px">
+  <div class="col-3">
 
-<div class="container-fluid" *ngIf ="postList.length ==0">
-  <div class="row " style="height:100px" >
-      <div class="col-3">
-
-      </div>
-      <div class="col-6  bg-primary make-center">
-         <span style="font-size:30px">nothing is posted here</span>
-
-      </div>
-      <div class="col-3">
-
-      </div>
+  </div>
+  <div class="col-6 bg-info make-center f1 rounded">
+    No Post Available!!!
+  </div>
+  <div class="col-3">
 
   </div>
 
 </div>
+</div>
+
