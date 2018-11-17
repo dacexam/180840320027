@@ -1,0 +1,71 @@
+<div class="container-fluid" >
+  <div class="row bg-primary" style="height:50px">
+    <div class="col-3">
+      <span style="font-size:30px">facebook</span>
+
+    </div>
+    <div class="col-6 make-center" >
+      <input [(ngModel)]="post" type="text"class="form-control form-control-lg" placeholder="post here...">
+    </div>
+    <div class="col-3 make-left">
+      <button (click)="posthere()" type="button" class="btn btn-sm btn-secondary">post here
+
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="container-fluid mt-1" *ngIf ="postList.length > 0" >
+  <div class="row mt-1" style="height:80px" *ngFor ="let item of postList">
+  
+    <div class="col-3"></div>
+    <div class="col-6 ">
+      <div class="card bg-primary">
+        <div class="card-body make-center text muted" style="min-height:100px">
+          <h5 class="card-title">
+            {{item.post}}
+
+          </h5>
+
+        </div>
+        <div class="card-foter text-muted">
+          <a href="#" (click)="likeCount(item)" class=" btn btn-sm btn-secondary">LIKE 
+            <span class="badge" >{{item.like}}</span>
+          </a>
+
+          <a href="#" (click)="dislikeCount(item)" class=" ml-1 btn btn-sm btn-secondary">DISLIKE
+              <span class="badge" >{{item.dislike}}</span>
+            </a>
+  
+
+        </div>
+      </div>
+    
+
+    </div>
+    <div class="col-3">
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="container-fluid" *ngIf ="postList.length ==0">
+  <div class="row " style="height:100px" >
+      <div class="col-3">
+
+      </div>
+      <div class="col-6  bg-primary make-center">
+         <span style="font-size:30px">nothing is posted here</span>
+
+      </div>
+      <div class="col-3">
+
+      </div>
+
+  </div>
+
+</div>
