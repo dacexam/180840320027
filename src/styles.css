@@ -1,17 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.css";
+/* You can add global styles to this file, and also import other style files*/
+@import "~bootstrap/dist/css/bootstrap.css" ;
 
 .make-center{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+display:flex;
+align-items: center;
+justify-content: center;
 }
-.make-left{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-.beautify{
-    font-size: 25px;
-    font-display:arial;
+
+.fb{
+    font-size: 50px;
+    color: ghostwhite;
+    font-weight: bolder;
 }

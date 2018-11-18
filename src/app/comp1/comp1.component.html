@@ -1,77 +1,54 @@
 <div class="container-fluid sticky-top">
-  <div class="row bg-info" style="height:80px" >
-    <div class="col-3 make-left beautify text-light">SAMBOOK</div>
+
+
+  <div class="row bg-dark">
+    <div class="col-3 make-left fb bg-dark">
+      chatbot
+    </div>
     <div class="col-6 make-center">
-      <input type="text" class="form form-control ml-2  "[(ngModel)]="postdata" placeholder="Say somthing ......">
-      <button class="btn btn-primary mr-2 " (click)=posthere()>posthere</button>
+    <input [(ngModel)]="post" class="form form-control form-control-lg" type="text" placeholder="How do you do..?">
+    </div>
+    <div class="col-3 make-center" (click)="function(i)">
+        <button class="btn btn-lg" style="font-weight:bold">POST</button>
     </div>
   </div>
-</div>
 
-<div class="container-fluid" *ngIf="postlist.length>0" >
-  <div class="row mt-2" *ngFor="let item of postlist">
+  
+  <div class="row" *ngFor="let i of array" >
     <div class="col-3"></div>
-    <div class="col-6">
-      <div class="card ">
-        <div class="card-body bg-info make-center beautify">
-          {{item.postdata}}
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary ml-1"(click)="likecount(item)">Like
-            <span class="badge badge-light">{{item.like}}</span>
-          </a>
-          
-          <a href="#" class="btn btn-primary ml-1 "(click)="dislikecount(item)">disLike
-            <span class="badge badge-light">{{item.dislike}}</span>
-          </a>
-          <a href="#" class="btn btn-primary ml-1 " (click)="editpost(item)">Edit
-          </a>
-          
-          <a href="#" class="btn btn-primary ml-1"(click)="deletepost(item)">delete
-          </a>
-          
-          <a href="#" class="btn btn-primary ml-1" (click)="commentbtn(item)">comment
-          </a>
-          <div class="row mt-2">
-            <div class="col-10 make-center" *ngIf="item.temp1">
-              <input type="text" class="form form-control ml-2" [(ngModel)]="item.posteditdata" >
-              
-            </div>
-            <div class="col-2"*ngIf="item.temp1"><a href="#" class="btn btn-primary "(click)="edit(item)">edit</a></div>
-          </div>  
-          <div class="row mt-2 " *ngIf="item.temp2">
-            <div class="col-10 ">
-              <input type="text" class="form form-control" placeholder="addcomment"[(ngModel)]="item.variable" > 
-            </div>
-            <div class="col-2 make-left">
-              <a href="" class="btn btn-primary" (click)="submitcomment(item)">submit</a>
-            </div>
-          
-          <div class="row mt-2" *ngFor="let item1 of item.arrcomm">
-            <div class="col-8" *ngIf="item1.temp3">
-              {{item1}}
-            </div>
-            <div class="col-2">
-              <a href="" class="btn btn-primary " (click)="submit(item1,items)" > Edit</a>
-            </div>
-            <div class="col-2">
-              <a href="" class="btn btn-primary " (click)="delete(items,item1)" > delete</a>
-            </div>
-          </div>
-          </div>
+    <div class="col-6 bg-light rounded mt-2  fb " style="height:400px">
       
+        <div class="row make-center bg-dark "style="height:20%"> {{i.post}}
         </div>
         
+         <div style=" border: 10px ">
         
-      </div>
-    </div>
-    </div>
+           <div class="row mt-1"  style="height:20% ">
+              <div class="col-4 make-center" (click)="likeCount(i)"><button class="btn btn-block btn-lg">LIKE <span class="badge badge-secondary">{{i.like}}</span></button></div>
+              <div class="col-4 make-center" (click)="dislikeCount(i)"><button class="btn btn-block btn-lg">DISLIKE <span class="badge badge-secondary">{{i.dislike}}</span></button></div>
+              <div class="col-4 make-center" (click)="delete(i)"><button class="btn btn-block btn-lg">DELETE {{i.delete}}</button></div>
+           </div>  
+       
+          <div class="row mt-1" style="height: 20%;">
+              <div class="col-4 make-center" (click)="update(i)"><button class="btn btn-block btn-lg">UPDATE</button></div>
+              <div class="col-8 make-center"><input [(ngModel)]="i.newupdate" class="form form-control form-control-lg" type="text" placeholder="Update post. . ."></div>
+          </div>
+          <div class="row mt-1" style="height:20%">
+              <div class="col-4 make-center" (click)="comment(i)"><button class="btn btn-block btn-lg">COMMENT</button></div>
+              <div class="col-8 make-center"><input [(ngModel)]="cpost" class="form form-control form-control-lg" type="text" placeholder="express your feelings..!"></div>
+          </div>
+   <div style="overflow-y: scroll;height:60px">
+          <div class="row mt-2 ml-4" style="height:20%; font-size: 20px; color: rgb(117, 104, 104); " *ngFor="let ii of i.countList">
+              {{ii}}
+          </div>
   </div>
+        </div>
+    </div>
+    <div class="col-3"></div>
+  </div>
+  
 
-<div class="container-fluid" *ngIf="postlist.length==0">
-  <div class="row mt-3" style="height:200px">
-    <div class="col-3"></div>
-    <div class="col-6 bg-info make-center text-light beautify">ADD FIRST POST </div>
-    <div class="col-3"></div>
-  </div>
+ 
+
 </div>
+
