@@ -1,32 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
- @import "../node_modules/bootstrap/dist/css/bootstrap.css";
-
- .make-center
-{    
-    display:flex; 
+@import "~bootstrap/dist/css/bootstrap.css";
+.make-center{
+    display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
 }
 
-.make-left
-
-
-{
-    display:flex;
-    justify-content: start;
-    align-items: center
+.make-left{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
-.fontify
-{
-    font-size:20px;
-    font-family:monospace; 
+.make-right{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
-.beautify
-{
-   font-size:40px;
-   color: ghostwhite;
-   background: black;
-
+.fontify{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 40px;
 }

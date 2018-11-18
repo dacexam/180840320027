@@ -5,37 +5,62 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './comp1.component.html',
   styleUrls: ['./comp1.component.css']
 })
-export class Comp1Component{
-  title ="Instagram";
+export class Comp1Component {
+
+  title='DACBOOK'
   post='';
-  postList=[];
+  postlist=[];
+  editpost='';
+  comment='';
+  //editbool='false';
 
-  postHere()
-  { 
-     const postObject={};
-     postObject['like']=0;
-
-     postObject['dislike']=0; 
-
-     postObject['post']=this.post;
-
-     this.postList.splice(0,0,postObject);
-     
-     this.post='';
-  }
-
-  likeCount(item)
+  posthere()
   {
-     item.like+=1;
-    
-  }
+    if(this.post!='')
+    {
+    const postobject={};
+    postobject['like']=0;
+    postobject['dislike']=0;
+    postobject['post']=this.post;
+    postobject['editpost']=this.editpost;
+    postobject['comment']=[];
 
+    this.postlist.splice(0,0,postobject);
+    this.post='';
+    }
+  }
   
-  dislikeCount(item)
+  likecount(item)
   {
-     item.dislike+=1;
-    
+    item.like+=1;
   }
+
+  dislikecount(item)
+  {
+    item.dislike+=1;
+  }
+
+  deletepost(item)
+  {
+    let index=this.postlist.indexOf(item);
+    this.postlist.splice(index,1);
+  }
+
+  editpostfn(item){
+
+    if(item.editpost!='')
+    {
+    item.post=item.editpost;
+    item.editpost='';
+    }
+  }
+
+  commenthere(item)
+  {
+    item.comment.push(this.comment);
+    this.comment='';
+  }
+
+
 
 }
-
