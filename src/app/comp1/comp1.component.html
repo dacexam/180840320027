@@ -1,0 +1,78 @@
+<div class="container-fluid sticky-top ">
+   <div class="row bg-secondary" style="height:55px">
+      <div class="col-3 make-left text-light">
+          {{FACEBOOK}}
+      </div>
+   
+       <div class="col-6 make-center ">
+       <input [(ngmodel)]="post" type="text" class="form-control form-control-lg" placeholder="write something here....">
+       <button (click)="posthere()" type="button" class="btn btn-danger btn-lg  ml-1">
+           POST HERE
+       </button> 
+       </div>
+
+  </div>
+</div>
+
+<div class="container fluid"  *ngif="postlist.length>0">
+    
+    <div class="row mt-1"  *ngfor="let item of postobject">
+         <div class="col-3">
+
+         </div>
+       
+          <div class="col-6 make-center ">
+              <div class="card">
+                  <div class="card-body make-center text-muted texify">
+                   <h5 class="card-title">
+                     {{item.POST}}
+                   </h5>
+                  </div>
+                </div>
+                <div class="row">
+                <input [(ngmodel)] ="editedpost" type="text" class="form form-control-lg">
+                 <button (click)="editpost(item)" type="button" class="btn btn-sm btn-danger">
+                     EDIT
+                  </button>
+                </div>  
+              </div>
+            </div>
+        
+        
+                <div class="card-footer">
+                    <a href=# (click)="likecount(item)" class="btn btn-primary btn-sm text-light ml-1 make-right">LIKE</a>
+                      <span class="badge badge-light make-center">
+                        {{item.like}}
+                      </span>
+
+                    <a href=# (click)="dislikecount(item)" class="btn btn-primary btn-sm text-light ml-1 make-right">DISLIKE</a>
+                    <span class="badge badge-light make-center">
+                      {{item.dislike}}
+                    </span>
+
+                     <a href=# (click)="deletepost(item)" class="btn btn-primary btn-sm text-light ml-1 make-right">Delete</a> 
+                     <span class="badge badge-light make-center">
+                        {{item.delete}}
+                     </span>
+                </div>
+      
+  </div>  
+</div>
+
+<div class="container-fluid" *ngif="postlist.length==0">
+    <div class="row mt-1 make-centre">
+     
+       <div class="col-3">
+
+       </div>
+
+       <div class="col-6 make-centre border border-dark beautify make-center">
+           no post available
+        </div>
+
+      <div class="col-3">
+
+      </div>
+    </div>
+
+</div>
