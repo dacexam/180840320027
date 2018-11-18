@@ -1,0 +1,30 @@
+.make-center{
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.make-left{
+    display: flex;
+    justify-content: left;
+    align-items: center
+}
+
+.make-right{
+    display: flex;
+    justify-content: right;
+    align-items: center
+}
+
+.fonty{
+    font-size: 200%;
+    font-weight: bolder;
+    font-stretch: expanded;
+    font-family: 'Courier New', Courier, monospace
+}
+
+.fonty2{
+    font-size: 300%;
+    font-weight: bold;
+    font-family: fantasy
+}
