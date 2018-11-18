@@ -1,0 +1,91 @@
+<div class="container-fluid">
+  <div class="row bg-danger" style="height:50px;">
+    <div class="col-3 text-light fairnhandsome make-left">
+      Nbook
+
+    </div>
+
+    <div class="col-6 make-center">
+
+      <input [(ngModel)]="abcd" type="text" class="form-control form-control-lg" placeholder="say something...">
+      <button (click)="posthere();" class="btn btn-sm ml-1">POST</button>
+
+    </div>
+
+    <div class="col-3">
+
+    </div>
+
+  </div>
+</div>
+
+<div class="container-fluid" *ngIf="values.length==0">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6 make-center fairnhandsome">
+      no post availaible
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="container-fluid mt-1">
+    <div class="row mt-1" *ngFor="let item of values">
+  
+      <div class="col-3"></div>
+  
+      <div class="col-6 bg-dark">
+  
+        <div class="row make-center fairnhandsome text-light"  style="min-height:150px;">
+          {{item.data}}
+        </div>
+
+        <div class="row">
+          <div class="col make-center">
+              <button (click)="increaselike(item);" class="btn btn-sm"> LIKE  
+                <span class="ml-1 badge badge-light">{{item.like}}</span> </button>
+          </div>
+          <div class="col make-center">
+              <button (click)="dislike(item);" class="btn btn-sm"> DISLIKE  
+                <span class="ml-1 badge badge-light">{{item.dislike}}</span> </button>
+          </div>
+          
+
+          
+          <div class="col make-center">
+              <button  class="btn btn-sm"> EDIT   </button>
+          </div>
+
+          
+          <div class="col make-center">
+              <button (click)="del(item);" class="btn btn-sm"> DELETE   </button>
+          </div>
+          
+        </div>
+        
+        <div class="row mt-1">
+          
+            <div class="col make-center">
+                <input [(ngModel)]="variable" type="text" class="form-control form-control-sm" placeholder="comment here...">
+                <button class="btn btn-sm ml-1"> COMMENT  <span class="ml-1 badge badge-light">{{item.comcount}}</span> </button>
+            </div>
+        </div>
+
+
+        <div class="row mt-1 text-light " *ngFor="let val of item.comm">
+       
+         <p> {{val}} </p> <a href="#" class="ml-5 text-danger">Delete</a>
+         
+        </div>
+
+
+      </div>
+      
+      <div class="col-3"></div>
+  
+    </div>
+    
+  
+  </div>
