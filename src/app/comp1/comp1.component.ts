@@ -6,34 +6,74 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./comp1.component.css']
 })
 export class Comp1Component {
-    post='';
-    postList=[];
-    title="DACBOOK";
+title = 'Instagram';
+postList=[];
+  post='';
+  comm='';
 
-    posthere(){
-      if(this.post=='')
-      {
-        alert("Write post");
-      }
-      else{
-           const postobj={};
-           postobj['post']=this.post;
-           postobj['like']=0;
-           postobj['dislike']=0;
-           this.postList.splice(0,0,postobj);
-           this.post='';
+  postNow(){
 
+    const postObject = {
+
+      'post' : this.post,
+      'like' : 0,
+      'dislike' : 0,
+      'comm' : '',
+      'comment' : [],
       }
-    }
-  likecount(item){
-          item.like += 1;
-  }
-  dislikecount(item){
-    item.dislike += 1;
-}
-delete(item){
-  this.postList.splice(this.postList.indexOf(item),1);
-}
     
+   if(this.post == '')
+   {
+     alert("Insert Message");
+   }
+   else{
+    this.postList.splice(0,0,postObject);
+
+   }
+    
+    this.post='';
+  }
+
+  likeCount(item){
+
+    item.like +=1;
+  }
+
+  dislikeCount(item){
+
+    item.dislike +=1;
+  }
+
+  commentHere(item){
+    item.comment +=1;
+    item.comment.push(this.comm);
+    this.comm='';
+
+  }
+
+  edittext1='';
+
+  editPost(item){
+
+    let index=item.indexOf(item);
+    item.splice(index,1,this.edittext1);
+  }
+
+  deletecom(item,item1){
+
+    let index=item.comment.indexOf(item1);
+    item.comment.splice(index,1);
+  }
   
+  edittext='';
+
+  edit(item,item1){
+
+    let index=item.comment.indexOf(item1);
+    item.comment.splice(index,1,this.edittext);
+  }
+    delete(item){
+    this.postList.splice(this.postList.indexOf(item),1);
 }
+}
+
