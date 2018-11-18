@@ -1,0 +1,49 @@
+<div class="container-fluid sticky-top">
+  <div class="row bg-secondary " style="height:50px">
+    <div class="col-2 make-left beautify text-light">
+      {{title}}
+    </div>
+    <div class="col-8 make-center">
+      <input type="text" [(ngModel)]="post" class="form form-control" placeholder="write here...">
+    </div>
+    <div class="col-2 make-left">
+      <button class="btn btn-sm" (click)="posthere()">post here</button>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row" *ngFor="let item of postlist">
+    <div class="col-3"></div>
+    <div class="col-6 mt-2">
+      <div class="card text-center">
+
+        <div class="card-body make-center">
+          {{item.post}}
+
+        </div>
+        <div class="card-footer text-muted">
+          <a href="#" (click)="likecount(item)" class="btn btn-primary ml-2">like <span class="badge badge-secondary" >{{item.like}}</span></a>
+          <a href="#" (click)="dislikecount(item)" class="btn btn-primary ml-2">dislike <span class="badge badge-secondary" >{{item.dislike}}</span></a>
+          <a href="#" (click)="commentcount(item)" class="btn btn-primary ml-2">comment <span class="badge badge-secondary">{{item.comment}}</span></a>
+          <a href="#" (click)="delete(item)" class="btn btn-primary ml-2">delete</a>
+        </div>
+        <div class="container-fluid">
+          <div class="row bg-primary make-center" style="height:30px" *ngFor="let item1 of item.postarray">
+            <input type="text" [(ngModel)]="data" class="form form-control">
+            <div class=col-12>
+              <div class="card text-center">
+
+                <div class="card-body">
+                  {{item.data}}
+
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-3"></div>
+      </div>
+    </div>
