@@ -1,0 +1,92 @@
+<div class="container-fluid sticky-top">
+  <div class="row bg-secondary" style="height:60px" >
+    <div class="col-3 make-left textify text-light"  style="font-weight:bold">
+        {{title}}
+    </div>
+    <div class="col-8 make-center">
+      <input class="form-control form-control-lg rounded" [(ngModel)]="post" placeholder="write something here .." type="text">
+      <button class="ml-1 btm btn-sm rounded btn-light" (click)="Posttext()">PostHere</button>
+    </div>
+    <div class="col-1">
+
+    </div>
+
+  </div>
+</div>
+
+<div class="mt-1 container-fluid" *ngIf="postlist.length > 0">
+
+  <div class="row" style="height:200px" *ngFor="let item of postlist">
+      <div class="col-3"></div>
+
+      <div class="col-6" >
+        <div class="row make-center"  style="height:50%; background-color:whitesmoke" >
+          {{item.post}}
+        </div>
+
+        <div class="mt-1 row" style="height:15%" >
+        <div class="col-3 make-center">
+          <button class="btn btn-sm btn-secondary" (click)="EditPost(item)">Edit</button>
+        </div>
+        
+
+        <div class="col-3 make-center">
+            <button class="btn btn-sm btn-secondary" (click)="DeletePost(item)">Delete</button>
+        </div>
+          
+
+        <div class="col-3 make-center">
+              <button class="btn btn-sm btn-secondary" (click)="likecount(item)">Like <span class="badge badge-primary">{{item.like}}</span></button>  
+        </div>
+
+        <div class="col-3 make-center">
+               <button class="btn btn-sm btn-secondary" (click)="dislikecount(item)">DisLike <span class="badge badge-primary">{{item.dislike}}</span></button>
+        </div>
+
+        </div>
+      
+        <div class="row" style="height:17%">
+          <div class="col-10 mt-1">
+            <input class="form-control form-control-sm make-center " [(ngModel)]="commentvar"  placeholder="Write comment here .." type="text">
+            
+          </div>
+          <div class="col-2">
+              <button class="mt-1 btn btn-secondary btn-sm" (click)="postcomment(item)">Comment</button>
+          </div>
+        </div>
+  
+        <div class="mt-1 row"  style="height:17%; overflow-y:scroll ">
+            <div class="col-8">{{item.commentvar}}</div>
+            <div class="col-2"> <button class="btn btn-sm btn-secondary" (click)="editpost()">Edit</button></div>
+            <div class="col-2"><button class="btn btn-sm btn-secondary" (click)="deletepost()">Delete</button></div>
+
+        </div>
+
+
+    
+
+    </div>
+
+    <div class="col-3"></div>
+  </div>
+
+</div>
+
+
+
+<div class="container-fluid" *ngIf="postlist.length==0">
+
+  <div class="mt-1 row" style="height:200px">
+      <div class="col-3">
+
+      </div>
+      <div class="col-6 bg-secondary make-center" style="font-size:20px">
+            No Post Available
+        </div>
+
+      <div class="col-3">
+
+        </div>
+  </div>
+
+</div>

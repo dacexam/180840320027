@@ -1,2 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
-@import "bootstrap/dist/css/bootstrap.css";
+
+@import "~bootstrap/dist/css/bootstrap.css";
+
+body{
+    margin: 0px;
+}
+
+.make-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.make-left{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.textify{
+    font-size: 15px;
+}
