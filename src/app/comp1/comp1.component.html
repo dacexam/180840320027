@@ -1,73 +1,61 @@
 <div class="container-fluid sticky-top">
-  <div class="row bg-dark" style="height:100px;">
-      <div class="col-3 h1 text-light left">
-        {{title}}
-      </div>
-      <div class="col-6 center">
-        <input type="text" [(ngModel)]="post" class="form-control form-control-lg " placeholder="say something">
-      </div>
-      <div class="col-3 left">
-        <a href="#" type="button" class="btn btn-info" (click)="postHere();">POST</a>
-      </div>
-  </div>
-</div>
-
-
-<div class="container-fluid">
-  <div class="row mt-2 bg-dark" *ngFor="let item of postList">
+    <div class="row bg-success" style="height:80px ;" >
+     <div class="col-3 make-center beautify "><b>Dacbook</b></div> 
+     <div class="col-6 make-center" >
+      <input [(ngModel)]="post" type="text" placeholder="write something..."size="50px">
+      <button (click)=posthere() class="btn btn-dark">post</button>
+    </div>
     <div class="col-3"></div>
-    <div class="col-6">
-          <div class="card">
-              <div class="card-body center">
-                {{item.post}}
-              </div>
-              
-              
-              <div class="card-footer">
-                <a href="#" type="button" class="btn btn-info mr-1" (click)="likeCount(item);">
-                  LIKE POST<span class="badge badge-dark">{{item.like}}</span>
-                </a>
-                <a href="#" type="button" class="btn btn-info mr-1" (click)="dislikeCount(item);">
-                  DISLIKE POST<span class="badge badge-dark">{{item.dislike}}</span>
-                </a>
-                <a href="#" type="button" class="btn btn-info mr-1" (click)="delete1(item);">
-                  DELETE<span class="badge badge-dark">{{item.delete}}</span>
-                </a>
-                <a href="#" type="button" class="btn btn-info mr-1" (click)="update1(item);">
-                    EDIT POST   
-                    
-                </a>
-                    <input type="text" [(ngModel)]="updatee" placeholder="Update post" class="form-control form-control-lg">
-                    {{item.updatee}}
-              </div>
+</div>   
+</div>
+  
+<div class="container-fluid" >
+<div class="row mt-2" *ngFor="let item of postlist">
+   <div class="col-3"></div>
+   <div class="col-6">
+    <div class="card bg-secondary">
+     <div class="card-body ">
+      <h4 class="card-title make-center">{{item.post}}</h4>
+      <a href="#" (click)="like(item)" class=" btn btn-primary btn-sm" >like
+        <span class="badge badge-light">{{item.like}}</span>
+      </a>
+
+      <a href="#" (click)="dislike(item)"class=" ml-2 btn btn-primary btn-sm">Dislike
+        <span class="badge badge-light">{{item.dislike}}</span>
+      </a>
+
+      <a href="#" (click)="editpost(item)" class="btn btn-primary ml-2 btn-sm">Edit post</a>
+      <a href="#" (click)="deletepost(item)" class="btn btn-primary btn-sm ml-2">Delete</a>
 
 
+      <input [(ngModel)]="comment" type="text" placeholder="comment here..."size="50px"mt-2>
+      <a href="#" (click)="commenthere(item)" class="btn btn-primary btn-sm ml-1" >comment</a>
+    
 
-              <div class="card-body">
-                <div class="row" >
-                    <input type="text" [(ngModel)]='item.comments' class="form-control form-control-lg" placeholder="comment here">
-                    <a href="#" class="btn btn-info" type="button" (click)="comment1(item);">
-                        COMMENT
-                      </a>
-                  </div>
-                <div class="row" *ngFor="let value of item.comment2">
-                  <p>{{value}}</p>
-                  <a href="#" type="button" class="ml-4 text-danger" (click)="delcomment(item,value);">
-                    DELETE
-                  </a>
-                </div>
+        <div class="row bg-secondary  ml-2"  *ngFor="let item1 of item.comment" style="min-height:30px; min-width: 20px;" >
+              <div class="col-6  bg-light ">
+                {{item1}}
               </div>
-          </div>
+
+       </div>
+     </div>  
+
     </div>
-  </div>
+
+
+   </div>
+   <div class="col-3"></div>
+
+
+   
+
 </div>
 
-<div class="container-fluid" *ngIf="postList==0">
-  <div class="row">
-    <div class="col-3">
-    </div>
-    <div class="col-6 bg-dark text-light mt-2 h2 center" style="height:100px; ">
-      No Post Available
-    </div>
-  </div>
+
 </div>
+
+<div class="container-fluid make-center mt-1" *ngIf="postlist.length==0">
+  <div class="col-4"></div>
+  <div class="col-4 make-center bg-info beautify">No post </div>
+   <div class="col-4"></div>
+  </div>

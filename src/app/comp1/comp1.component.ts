@@ -5,62 +5,54 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './comp1.component.html',
   styleUrls: ['./comp1.component.css']
 })
-export class Comp1Component {
+export class Comp1Component  {
 
-  constructor() { }
-title='DACBOOK';
-post='';
-postList=[];
-updatee='';
-comments='';
+  postlist=[];
+  post='';
+  comment='';    
 
-postHere(){
-  const postObject={
-    'comment2':[],
-'like': 0,
-'post': this.post,
-'dislike': 0,
-'comments' : this.comments,
-};
+ posthere(){
+   if(this.post!=''){
+ const postobject={};
+ postobject['like']=0; 
+ postobject['dislike']=0;
+ postobject['post']=this.post;
+ postobject['comment']=[];
 
+ this.postlist.splice(0,0,postobject);
+ this.post='';
+   }
+ }
 
-  if(this.post!=''){
-  this.postList.splice(0,0,postObject);
-  this.post='';
-  }
-  else
-  {
-    alert("Write something");
-  }
-}
+   like(item){
+   item.like +=1;
+ }
 
-likeCount(item){
-  item.like+=1;
-}
+   dislike(item){
+   item.dislike +=1;
+   }
+  
+   commenthere(item){ 
+     if(this.comment!=''){
+     item.comment.push(this.comment);
+     this.comment='';
+     }
+   }
 
-dislikeCount(item){
-  item.dislike+=1;
-}
+   deletepost(item)
+     { 
+        this.postlist.splice(this.postlist.indexOf(item),1);
 
-delete1(item){
-  let index=this.postList.indexOf(item);
-  this.postList.splice(index,1);
-}
+     }
+   
+     editpost(item){
+       item.post=this.post;
+       this.post='';
+     }  
 
-update1(item){
-  item.post=this.updatee;
-  item.updatee='';
-}
+     deletecomment(item)
+     { 
+        this.comment.splice(this.comment.indexOf(item),1);
 
-comment1(item){
-  let val=item.comments;
-  item.comment2.splice(0,0,val);
-  item.comments='';
-}
-
-delcomment(item,value){
-  let index =item.comment2.indexOf(value);
-  item.comment2.splice(index,1);
-}
-
+     }
 }
