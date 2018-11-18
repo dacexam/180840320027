@@ -1,50 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { TestBed, async } from '@angular/core/testing';
+import { AppComponent } from './app.component';
 
-@Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
-})
-export class HeaderComponent  {
+describe('AppComponent', () => {
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        AppComponent
+      ],
+    }).compileComponents();
+  }));
 
-  variable='';
-  values=[];
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
+  });
 
-  abcd='';
-  
-  posthere(){
+  it(`should have as title 'dacbook'`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app.title).toEqual('dacbook');
+  });
 
-   const node={
-     'data': this.abcd,
-     'like': 0,
-     'dislike' : 0,
-     'comcount':0,
-      'comm':[]
-   };
-
-    this.values.splice(0,0,node);
-
-    this.abcd='';
-
-  }
- 
-  increaselike(temp){
-    temp.like+=1;
-  }
-
-  dislike(temp){
-    if(temp.data!='' ) 
-    temp.dislike+=1;
-  }
-
-
-  del(temp){
-    let index=this.values.indexOf(temp);
-    this.values.splice(index,1);
-
-  }
-
-  
-  }
-
-}
+  it('should render title in a h1 tag', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to dacbook!');
+  });
+});
