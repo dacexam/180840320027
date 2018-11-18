@@ -36,8 +36,8 @@ export class Comp1Component  {
      }
 
      deletecomm(temp){
-       let index = this.comm.indexOf(temp);
-          this.comm.splice(index,1);
+       //let index = this.comm.indexOf(temp);
+        //  this.comm.splice(index,1);
           
 
      }
@@ -55,12 +55,7 @@ export class Comp1Component  {
 
 
      }
-     deletecomm(temp){
-      
-          this.comm.splice(this.comm.indexOf(temp),1);
-          
-
-     }
+     
      decreaselike(temp){
           temp.dislike += 1;
 
