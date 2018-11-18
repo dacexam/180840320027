@@ -2,22 +2,16 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
 .make-center{
-
-display: flex;
-justify-content: center;
-align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
 .make-left{
-
     display: flex;
     justify-content: left;
     align-items: center;
-    }
+}
 
-  .beautify{
-    
-    font-family: monospace;
-    font-size: 60px;  
-  }  
+

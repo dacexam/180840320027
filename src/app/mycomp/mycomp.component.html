@@ -1,0 +1,74 @@
+<div class="container-fluid" >
+  <div class="row bg-danger" style="height:80px">
+    <div class="col-2 text-light make-center" style="font-family:fantasy;font-size:40px;text-shadow: 2px 4px 15px black">ChitChat</div>
+    <div class="col-8 make-center">
+      <input [(ngModel)]="post" type="text" class="form-control form-control-lg " placeholder="write something here...">
+      <button (click)="postHere()" type="button" class="btn btn-lg btn-dark ml-1 make-center">post</button>
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="container-fluid" *ngIf="postList.length>0">
+  <div class="row mt-3" style="height:400px" *ngFor="let item of postList">
+    	<div class="col-3"></div>
+      <div class="col-6">
+        <div class="card " style="min-height:300px;box-shadow: 2px 2px 10px black">
+          <div class="card-header" style="font-weight:bold;font-size:30px">Imran Ansari</div>
+          <div class="card-body">
+            <h5 class="text-dark make-center " style="font-size:50px">{{item.post}}</h5>
+          </div>
+          <div class="card-footer" style="min-height:100px">
+            <a (click)="likeCount(item)" href="#" type="button" class="btn btn-lg btn-primary">like
+              <span class="badge badge-success">{{item.like}}</span>
+            </a>
+
+            <a (click)="dislikeCount(item)" href="#" type="button" class="btn btn-lg btn-primary ml-3">dislike
+                <span class="badge badge-danger">{{item.dislike}}</span>
+            </a>
+          
+            <a  (click)="deletePost(item)" href="#" type="button" class="btn btn-lg btn-primary ml-3 btn-danger">delete
+            </a>
+
+            <a href="#" type="button" class="btn btn-lg btn-primary ml-3">edit
+            </a>
+            
+            <div class="row mt-2">
+              <div class="col-9">
+                <input [(ngModel)]="comment" type="text" class="form-control form-control-lg" placeholder="comment here...">
+              </div>
+              <div (click)="commentHere(item)" class="col-3 make-left"><button type="button" class="btn btn-primary">comment
+              </button>
+              </div>
+
+            </div>
+            <div class="row ml-2 mt-1" *ngFor="let item1 of item.commentList">
+                <div class="border col-6  rounded" style=" height:30px ; background: rgb(168, 166, 166)">
+                  {{comment}}
+                </div>
+                <a href="#" type="button " class="btn ml-2" >edit</a>
+               <a (click)="deleteComment(item,item1)" href="#" type="button " class="btn ml-2" >delete</a>
+              </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-3"></div>
+  </div>
+
+</div>
+
+
+
+<div class="container-fluid" *ngIf="postList.length==0">
+  <div class="row mt-2" style="height:300px">
+    <div class="col-3">
+    </div>
+    <div class="col-6 make-center bg-info border border-dark rounded" style="font-size:60px">NO Post Available!!!
+      </div>
+      <div class="col-3">
+        </div>
+  </div>
+</div>
