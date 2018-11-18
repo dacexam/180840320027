@@ -1,17 +1,2 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.css";
-.center{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-}
-.left{
-    display:flex;
-    justify-content:flex-start;
-    align-items:center;
-}
-
-.font{
-    font-family: cursive;
-    font-size: 35px;
-}
+@import "~bootstrap/dist/css/bootstrap.css"

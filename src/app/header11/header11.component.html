@@ -1,0 +1,54 @@
+<div class="container-fluid">
+  <div class="row bg-primary" style="height:50px">
+    <div class="col-3 make-left beautify text-light">DACBOOK</div>
+    <div class="col-6">
+      <input [(ngModel)]="abcd" class="form-control form-control-lg make-center" type="text" placeholder="say something....">
+    </div>
+    <div class="col-3">
+      <button (click)="posthere();" class="btn btn-sm make-center mt-2">POST</button>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+ 
+  <div class="row"  *ngIf="values.length==0">
+    <div class="col-3"></div>
+    <div class="col-6 text-dark beautify makecenter">no post available</div>
+  <div class="col-3"></div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row mt-1" *ngFor="let item of values">
+    <div class="col-3"></div>
+    <div class="col-6 bg-primary">
+      <div class="row border text-light beautify make-center" style="min-height:150px">{{item.data}}</div>
+      <div class="row border " style="height:40px">
+        <div class="col">
+          <button (click)="increaselike(item);" class="btn btn-sm make-center mt-1">LIKE<span class="badge badge-light">{{item.like}}</span></button>
+        </div>
+        <div class="col">
+          <button (click)="dislike(item);" class="btn btn-sm make-center mt-1">DISLIKE<span class="badge badge-light">{{item.dislike}}</span></button>
+        </div>
+        <div class="col">
+          <button (click)="edit(item);" class="btn btn-sm  mt-1">EDIT<span class="badge badge-light">{{item.edit}}</span></button>
+        </div>
+        <div class="col">
+          <button (click)="delete(item);" class="btn btn-sm make-center mt-1">DELETE</button>
+        </div>
+      </div>
+      <div class="row border ">
+        <div class="col-9">
+          <input [(ngModel)]="variable" class="form-control form-control-sm make-center" type="text" placeholder="comment here...">
+        </div>
+        <div class="col-3">
+          <button (click)="comment(item)" class="btn btn-sm ml-1 make-center">COMMENT<span class="badge badge-light">{{item.comcount}}</span></button>
+        </div>
+      </div>
+      <div class="row beautify text-light" *ngFor="let val of item.comm">
+        <p>{{val}}</p>
+        <button (click)="deletecomment(item);" class="btn btn-sm make-center ml-7 mt-1">DELETE</button>
+      </div>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>

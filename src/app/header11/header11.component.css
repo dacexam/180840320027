@@ -1,0 +1,15 @@
+.make-left{
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.make-center{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.beautify{
+    font-family: cursive;
+    font-size: x-large;
+    font-weight: bold;
+}
