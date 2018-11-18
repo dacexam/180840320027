@@ -1,0 +1,58 @@
+
+
+<div class="container-fluid sticky-top" >
+  <div class="row  bg-info" style="height:60px">
+    <div class="col-3 makr-left beautify">
+      facebook
+    </div>
+<div class="col-6 make-center">
+  <input type="text" [(ngModel)]="post" placeholder="write here.." size="50px">
+  <button (click)="posthere()" class=" ml-1 btn btn-sm btn primary">post it</button>
+</div>
+<div class="col-3"></div>
+  </div>
+</div>
+  
+
+<div class="container-fluid " *ngIf="postlist.length >= 0">
+ <div class="container-fluid mt-2" >
+    <div class="row mt-1" *ngFor="let item of postlist">
+    <div class="col-3"></div>
+    <div class="col-6">
+    <div class="card">
+            <div class="card-body bg-light">
+              <h5 class="card-title make-center">{{item.post}}</h5>
+                <div class="card-footer make-center">
+              <a href="#" (click)="like(item)" class="btn btn-info ml-1">like
+                <span class="badge badge-light">{{item.like}}</span>
+              </a>
+              <a href="#"  (click)="dislike(item)" class="btn btn-info ml-1" >dislike
+                  <span class="badge badge-light">{{item.dislike}}</span>
+                </a>
+                <a href="#"  (click)="delete(item)" class="btn btn-info ml-1">delete        
+                </a>
+                <a href="#"  (click)="edit(item)" class="btn btn-info ml-1">edit       
+                </a>
+            </div>
+    </div>
+    </div>
+    <div class="card-header bg-light mt-2 make-center" style="height:30%">
+      <input type="text" [(ngModel)]="comment" placeholder="comment here.." size="50px">
+      <button (click)="commenthere(item1)" class=" ml-2 btn btn-sm btn primary">comment</button>
+    </div>
+    <div *ngFor="let item1 of item.comment">
+      <div>comment..{{item.comment}}</div>
+    </div>
+    <div class="col-3"></div>
+    </div>
+    </div>
+ </div>
+
+
+    <div class="container-fluid" *ngIf="postlist.length==0">
+      <div class="row" style="height:100px">
+        <div class="col-3"></div>
+        <div class="col-6 make-center bg-info">NO POST AVAILABLE</div>
+        <div class="col-3"></div>
+        </div>
+        </div>
