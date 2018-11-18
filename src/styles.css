@@ -1,2 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.css";
+@import '../node_modules/bootstrap/dist/css/bootstrap.css';
+
+
+.make-center{
+
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+
+.make-left{
+ 
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+}
+
+.beautify{
+
+    font-style: italic;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
