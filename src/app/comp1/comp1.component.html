@@ -5,7 +5,7 @@
       </div>
    
        <div class="col-6 make-center ">
-       <input [(ngmodel)]="post" type="text" class="form-control form-control-lg" placeholder="write something here....">
+       <input [(ngModel)]="post" type="text" class="form-control form-control-lg" placeholder="write something here....">
        <button (click)="posthere()" type="button" class="btn btn-danger btn-lg  ml-1">
            POST HERE
        </button> 
@@ -14,7 +14,7 @@
   </div>
 </div>
 
-<div class="container fluid"  *ngif="postlist.length>0">
+<div class="container fluid"  *ngIf="postlist.length>0">
     
     <div class="row mt-1"  *ngfor="let item of postobject">
          <div class="col-3">
@@ -56,10 +56,9 @@
                      </span>
                 </div>
       
-  </div>  
-</div>
+</div>  
 
-<div class="container-fluid" *ngif="postlist.length==0">
+<div class="container-fluid" *ngIf="postlist.length==0">
     <div class="row mt-1 make-centre">
      
        <div class="col-3">
