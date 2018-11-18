@@ -1,16 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule } from '@angular/forms';
-import {FbComponent} from './fb/fb.component';
-
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { from } from 'rxjs';
+import { FakebookComponent } from './fakebook/fakebook.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FbComponent
+    FakebookComponent
   ],
   imports: [
     BrowserModule,

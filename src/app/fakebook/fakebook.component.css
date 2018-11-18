@@ -1,0 +1,11 @@
+.make-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.make-left{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
