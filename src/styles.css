@@ -1,17 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
-.make-center{
-    display: flex;
+
+body{
+    margin:0;
+}
+
+.makecenter{
+    display:flex;
     justify-content: center;
     align-items: center;
-
 }
-.make-left{
-    display: flex;
-    justify-content: flex-start;
+
+.makeleft{
+    display:flex;
+    justify-content: left;
     align-items: center;
 }
 
-.beautify{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 170%;
+.fontify{
+    font-family: cursive;
+    font-size: 55px;
 }
