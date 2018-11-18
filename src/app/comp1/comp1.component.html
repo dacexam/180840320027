@@ -1,80 +1,77 @@
 <div class="container-fluid sticky-top">
-    <div class="row bg-info text-light">
-        <div class="col-3 make-left fontify">{{title}}</div>
-        <div class="col-6 make-center" style="height: 60px;">
-            <input type="text" [(ngModel)]="post" placeholder="post something.." class="form form-control">
-        </div>
-        <div class="col-3 make-left">
-          <button class="button" (click)="posthere()" class="btn">POST HERE</button>
-        </div>
+  <div class="row bg-info" style="height:80px" >
+    <div class="col-3 make-left beautify text-light">SAMBOOK</div>
+    <div class="col-6 make-center">
+      <input type="text" class="form form-control ml-2  "[(ngModel)]="postdata" placeholder="Say somthing ......">
+      <button class="btn btn-primary mr-2 " (click)=posthere()>posthere</button>
     </div>
-</div>
-
-<!-- <div class="container-fluid" *ngIf="postlist.length>0"> -->
-<div class="container-fluid" *ngIf="postlist.length>0">
-  <div class="row" *ngFor="let item of postlist">
-      <div class="col-3"></div>
-      <div class="col-6 " >
-        
-        <div class="card bg-info text-light rounded make-center mt-1" style="height: 120px;">
-            <div class="card-body">
-              <h2 class="card-title">{{item.post}}</h2>
-            </div>
-        </div>
-        <div class="card-footer">
-            <a href="#" (click)="likecount(item)" class="btn btn-warning">LIKE
-                <span class="badge badge-light">{{item.like}}</span>
-            </a>
-            <a href="#" (click)="dislikecount(item)" class="btn btn-warning ml-2">DISLIKE
-                <span class="badge badge-light">{{item.dislike}}</span>
-            </a>
-            <a href="#" (click)="deletepost(item)" class="btn btn-warning ml-2">DELETE POST
-            </a>
-
-            <div class="row mt-1" style="height: 30px;">
-              <div class="col-9"> 
-                  <input type="text" [(ngModel)]="item.editpost" placeholder="edit post.." class="form form-control">
-              </div>
-              <div class="col-3">
-                  <a href="#" (click)="editpostfn(item)" class="btn btn-warning ml-2">EDIT POST</a>
-              </div>                  
-            </div>
-
-            <div class="row mt-3 mb-2" style="height: 30px;">
-                <div class="col-9"> 
-                    <input type="text" [(ngModel)]="comment" placeholder="comment here.." class="form form-control">
-                </div>
-                <div class="col-3">
-                    <a href="#" (click)="commenthere(item)" class="btn btn-warning ml-2">COMMENT</a>
-                </div>                  
-            </div>
-
-           
-
-            <div   *ngFor="let item1 of item.comment">
-               <div class="text-secondary" style="font:25px">
-                 
-                =>{{item1}}
-                  
-                  <a href="#" (click)="editcomment(item1)" class="btn btn-warning ml-2 ">Edit</a>
-                  <a href="#" (click)="deletecomment(item)" class="btn btn-warning ml-2 ">Delete</a>
-                  
-               </div>
-             </div>
-
-        </div>
-      </div>
-
-      <div class="col-3"></div>    
   </div>
 </div>
 
-<div class="container-fluid" *ngIf="postlist.length==0">
-    <div class="row" >
-        <div class="col-3"></div>
-        <div class="col-6 make-center bg-info rounded mt-1 text-light fontify" style="height: 120px;">
-            Add a new post..
+<div class="container-fluid" *ngIf="postlist.length>0" >
+  <div class="row mt-2" *ngFor="let item of postlist">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <div class="card ">
+        <div class="card-body bg-info make-center beautify">
+          {{item.postdata}}
         </div>
-        <div class="col-3"></div>
+        <div class="card-footer">
+          <a href="#" class="btn btn-primary ml-1"(click)="likecount(item)">Like
+            <span class="badge badge-light">{{item.like}}</span>
+          </a>
+          
+          <a href="#" class="btn btn-primary ml-1 "(click)="dislikecount(item)">disLike
+            <span class="badge badge-light">{{item.dislike}}</span>
+          </a>
+          <a href="#" class="btn btn-primary ml-1 " (click)="editpost(item)">Edit
+          </a>
+          
+          <a href="#" class="btn btn-primary ml-1"(click)="deletepost(item)">delete
+          </a>
+          
+          <a href="#" class="btn btn-primary ml-1" (click)="commentbtn(item)">comment
+          </a>
+          <div class="row mt-2">
+            <div class="col-10 make-center" *ngIf="item.temp1">
+              <input type="text" class="form form-control ml-2" [(ngModel)]="item.posteditdata" >
+              
+            </div>
+            <div class="col-2"*ngIf="item.temp1"><a href="#" class="btn btn-primary "(click)="edit(item)">edit</a></div>
+          </div>  
+          <div class="row mt-2 " *ngIf="item.temp2">
+            <div class="col-10 ">
+              <input type="text" class="form form-control" placeholder="addcomment"[(ngModel)]="item.variable" > 
+            </div>
+            <div class="col-2 make-left">
+              <a href="" class="btn btn-primary" (click)="submitcomment(item)">submit</a>
+            </div>
+          
+          <div class="row mt-2" *ngFor="let item1 of item.arrcomm">
+            <div class="col-8" *ngIf="item1.temp3">
+              {{item1}}
+            </div>
+            <div class="col-2">
+              <a href="" class="btn btn-primary " (click)="submit(item1,items)" > Edit</a>
+            </div>
+            <div class="col-2">
+              <a href="" class="btn btn-primary " (click)="delete(items,item1)" > delete</a>
+            </div>
+          </div>
+          </div>
+      
+        </div>
+        
+        
+      </div>
     </div>
+    </div>
+  </div>
+
+<div class="container-fluid" *ngIf="postlist.length==0">
+  <div class="row mt-3" style="height:200px">
+    <div class="col-3"></div>
+    <div class="col-6 bg-info make-center text-light beautify">ADD FIRST POST </div>
+    <div class="col-3"></div>
+  </div>
 </div>
