@@ -1,58 +1,95 @@
 import { Component, OnInit } from '@angular/core';
-import { isNgTemplate } from '@angular/compiler';
 
 @Component({
   selector: 'app-comp1',
   templateUrl: './comp1.component.html',
   styleUrls: ['./comp1.component.css']
 })
-export class Comp1Component {
+export class Comp1Component implements OnInit {
 
-    post='';
-    postList=[];
-    upd='';
-    comm='';
-    
+  title = 'DacBook';
+  post = '';
+  postList = [];
 
-    postHere(){
-      const postObject={};
-      postObject['post']= this.post;
-      postObject['like']=0;
-      postObject['dislike']=0;
+  h = new Date().getHours();
+  m = new Date().getMinutes();
+  s = new Date().getSeconds();
 
-      let comment=[];
-      postObject['cc']=0;
-      postObject['comment']=comment;
-
-      if(this.post != '')
-      {
-        this.postList.splice(0,0,postObject);
-        this.post='';
+  newPost() {
+    if (this.post != '') {
+      let postObj = {
+        post: this.post,
+        like: 0,
+        dislike: 0,
+        comment: '',
+        comments: [],
+        editedpost: '',
       }
- 
-      
+      this.postList.splice(0, 0, postObj);
+      this.post = '';
+    } else {
+      alert("Post box is empty");
     }
+  }
 
-    countLike(item){
-      item.like+=1;
-    }
-    countDislike(item){
-      item.dislike+=1;
-    }
+  editPost(i){
+    if(i.editedPost != '')
+    {
+      i.post = i.editedPost ;
+      i.editedPost = '';
+    }    
+  }
 
-    deletePost(item){
-      let x=this.postList.indexOf(item);
-      this.postList.splice(x,1);
-    }
-    updatePost(item){
-      item.post=item.upd;
-      item.upd= '';
-    }
+  likePost(i){
+    i.like++;
+  }
 
-    commentHere(item){
-      item.comment.splice(0,0,this.comm);
-      item.cc+=1;
-      this.comm='';
+  dislikePost(i){
+    i.dislike++;
+  }
+
+  deletePost(i){
+    this.postList.splice(this.postList.indexOf(i),1);
+  }
+
+  newComment(i){
+    if(i.comment!=''){
+      let commentObj = {
+        comment : i.comment,
+        like : 0 ,
+        dislike : 0,
+        editedComment : ''
+      }
+  
+      i.comments.push(commentObj);
+      i.comment = '';
+    }else{
+      alert("Comment Box is empty");
     }
+  }
+
+  deleteComment(i,commentObj){
+    i.comments.splice(i.comments.indexOf(commentObj),1);
+  }
+
+  editComment(i,commentObj){
+    if(commentObj.editedcomment!=''){
+      commentObj.comment = commentObj.editedComment;
+      commentObj.editedComment = '';
+    }
+   }
+
+  likeComment(commentObj){
+    commentObj.like++;
+  }
+  dislikeComment(commentObj){
+    commentObj.dislike++;
+  }
+  
+
+  constructor() { }
+
+  ngOnInit() {
+  }
 
 }
