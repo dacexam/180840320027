@@ -1,0 +1,13 @@
+.comment{
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.datetime{
+
+    display: flex;
+    justify-content:right;
+    align-items:right;
+}
