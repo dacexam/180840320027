@@ -5,70 +5,43 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './comp1.component.html',
   styleUrls: ['./comp1.component.css']
 })
-export class Comp1Component {
+export class Comp1Component implements OnInit {
 
-  title = 'DACBOOK';
-  post = '';
-  postlist = [];
-   
-  postdata() {
-    if (this.post == '') {
-      alert("post cant be empty!!");
-    }
-    else {
-      const postobject = {};
-      postobject['like'] = 0;
-      postobject['dislike'] = 0;
-      postobject['comment'] = 0;
-      postobject['comments'] ='';
-      postobject['comment'] = 0;
-      postobject['Arraylist'] = [];
-      postobject['post'] = this.post;
-      this.postlist.splice(0, 0, postobject);
-      this.post = '';
-    }
-  }
-  deletepost(item) {
-    let i = this.postlist.indexOf(item);
-    this.postlist.splice(i, 1);
-  }
-  editpost(item) {
-    item.post = this.post;
-  }
-  postcomment(item){
-    if(item.comments==''){
-      alert ("comment cant be empty");
-    }
-    else{
-    item.comment+=1;
-    let comm=item.comments;
-    item.Arraylist.splice(0,0,comm);
-     item.comments='';
-  }}
+title = 'ROLLID';
+post = '';
+postList = [];
+edited = '';
 
-  likecounter(item) {
-    item.like += 1;
+newPost(){
+  let PostObj = {
+    like : 0,
+    dislike : 0,
+    post : this.post,
+    edited : this.edited,
   }
-  deletecomment(item1,item){
+  this.postList.splice(0,0,PostObj);
+  this.post = '';
+}
 
-    item.comment-=1;
-    let i = item.Arraylist.indexOf(item1);
-    item.Arraylist.splice(i, 1);
-  }
-  editcomment(item1,item){
-    if(item.comments==''){
-      alert ("comment cant be empty");
-    }
-    else{
-    let i = item.Arraylist.indexOf(item1);
-    let comm=item.comments;
-    item.Arraylist.splice(i, 1);
-    item.Arraylist.splice(i,0,comm);
-     item.comments='';
-    }
+like(i){
+  i.like++;
+}
+
+dislike(i){
+  i.dislike++;
+}
+delete(i){
+  this.postList.splice(this.postList.indexOf(i),1)
+}
+
+
+edit(){
+  i.edited = this.edited;
+}
+
+  constructor() { }
+
+  ngOnInit() {
   }
 
-  dislikecounter(item) {
-    item.dislike += 1;
-  }
 }
