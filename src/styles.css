@@ -1,28 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import "~bootstrap/dist/css/bootstrap.css";
-
-
-
-.make-center {
+.make-center{
     display: flex;
-    justify-content:center;
+    justify-content: center;
+    align-items: center;
+}
+.make-left{
+
+    display: flex;
+    justify-content:flex-start;
     align-items: center;
 }
 
-.make-left {
+.make-right{
+
     display: flex;
-    justify-content:left;
-    align-items: center;
+    justify-content:flex-end;
+    align-items:flex-end;
 }
 
 
-.beautify {
-    background: royalblue;
-
-}
-
-.fontify {
-    font-weight: bolder;
-    font-size: 40px;
-    color:lightslategray;
-}
+ .beautify{
+     font-family: cursive;
+     font-size: x-large;
+     font-weight: bold;
+     font-style: italic;
+ }
+ .beautify1{
+     font-family: cursive;
+     font-size: x-large;
+     font-weight: bold;
+     font-style: normal;
+ }
