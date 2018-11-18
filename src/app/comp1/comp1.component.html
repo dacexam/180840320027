@@ -1,108 +1,73 @@
-<div class="container-fluid">
-    <div class="row bg-primary" style="height: 100px">
-      <div class="col-3 make-left beautify text-light"> 
-             DACBOOK
-      </div>
-      <div class="col-6 make-center ">
-          <input [(ngModel)]="abcd" class="form-control form-control-lg " type="text" placeholder="write something">
-          <button (click)="posthere()" class="ml-1 btn btn-sm">POST </button> 
-             
-      </div>
-      <div class="col-3 "> 
-            
-      </div>
-  
-   </div>
-
-
+<!--<p>
+  comp1 works!
+</p>-->
+<div class="container-fluid sticky-top"> 
+  <div class="row" style="min-height:55px">
+    <div class="col-3 bg-info beautify m-center text-light">
+    Project99
+    </div>
+    <div class="col-6 bg-info m-center">
+   <input [(ngModel)]='post' type="text" class="form-control" placeholder="write something..">
+    </div>
+    <div class="col-3 bg-info m-center">
+      <button (click)="mypost()" class="btn btn-light">post here</button>
+    </div>
+  </div>
 </div>
 
-<div class="container-fluid mt-2" *ngIf="values.length==0">
-    <div class="row " style="height: 150px">
-      <div class="col-3 "> 
+<div class="container-fluid " *ngIf="postlist.length > 0"> 
+  <div class="row mt-1" *ngFor="let item of postlist">
+    <div class="col-3 " style="height:90px">
       
-      </div>
-      <div class="col-6 make-center beautify bg-secondary text-light ">
-         HELLO..NO POST FOUND    
-      </div>
-      <div class="col-3 "> 
-            
-      </div>
-  
-   </div>
+    </div>
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <h5>  
+           {{item.post}}
+          </h5>
+        </div>
+        <div class="card-footer">
+            <a href="#"  (click)="likecount(item);" class="btn btn-info btn-sm">like
+            <span class="badge badge-light">{{item.like}}</span>
+            </a>
+            <a href="#" (click)="dislikecount(item);" class="btn btn-info btn-sm ml-1">dislike
+                <span class="badge badge-light">{{item.dislike}}</span>
+            </a>
+            <a href="#" (click)="delete(item)"class="btn btn-info btn-sm ml-1">delete
+            </a>
+        
+              <div *ngFor="let com1 of addcomment">
+              <p>
+                {{com1.comm}}
+              </p>
+              <button (click)="deletecomment(com1)" class=" btn-danger">X</button> 
+              </div>
+              
+              <div>
+                  <input [(ngModel)]='comm' type="text" class="form-control" placeholder="write comment....">
+                  <a href="#" (click)="comment(com1)" class="btn btn-info btn-sm">comment</a>
+              </div>
 
+         </div>
+      </div> 
+    </div>
+    <div class="col-3">
 
+    </div>
+  </div>
 </div>
 
+<div class="container-fluid " *ngIf="postlist.length == 0"> 
+  <div class="row mt-1"  style="min-height:90px">
+    <div class="col-3">
 
-<div class="container-fluid mt-1  ">
-    <div class="row " *ngFor="let item of values">
-      <div class="col-3 "> 
-      
-      </div>
-      <div class="col-6 bg-secondary rounded " style="border-color:brown">
-            <div class="row make-center beautify1 text-light" style="min-height: 150px" >
-                  {{item.data}}
-             </div>       
-            <div class="row border"> 
-                        <div class="col make-center">
-                             <button (click)="increaselike(item)" class="btn btn-sm">LIKE 
-                                   <span class="badge badge-light ml-1">{{item.like}} </span>
-                            
-                               </button> 
-          
-                        </div>
-                        <div class="col make-center">
-                             <button (click)="decreaselike(item)" class="btn btn-sm">DISLIKE 
-                                   <span class="badge badge-light ml-1">{{item.dislike}} </span>
-                            
-                               </button> 
-          
-                        </div>
-                        <div class="col make-center">
-                             <button (click)="edit(item)" class="btn btn-sm">EDIT 
-                                   
-                              </button> 
-          
-                        </div>
-                        <div class="col make-center">
-                             <button (click)="delete(item)" class="btn btn-sm">DELETE
-                                                             
-                               </button> 
-          
-                        </div>
-               </div>
-            <div class="row mt-1"> 
-                     
-                     <div class="col make-center">
-                        <input [(ngModel)]="variable" class="form-control form-control-lg " type="text" placeholder="comment something">
-                        <button (click)="comment(item)" class="btn btn-sm">COMMENT  
-                          <span class="badge badge-light ml-1">{{item.comcount}} </span>
-                          </button> 
-           
-                       </div>
-               </div>
-
-           <div class="row text-light beautify" *ngFor="let val of item.comm" > 
-                    <p>  {{val}} 
-                    <button (click)="deletecomm(item)" class="ml-5 btn btn-sm">DELETE                                                       
-                               </button>
-                     <button (click)="editcomm(item)" class="ml-2 btn btn-sm">edit
-                               </button> 
-                    </p>
-
-
-               </div>
-
-     
-      </div>
-      <div class="col-3 "> 
-            
-      </div>
-  
-   </div>
-
-
+    </div>
+    <div class="col-6 bg-info m-center text-light">
+     NO POST FOUND
+    </div>
+    <div class="col-3 ">
+    
+    </div>
+  </div>
 </div>
-
-

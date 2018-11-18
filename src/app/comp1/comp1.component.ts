@@ -5,63 +5,69 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './comp1.component.html',
   styleUrls: ['./comp1.component.css']
 })
-export class Comp1Component  {
+export class Comp1Component implements OnInit {
 
-   values = [];
-   abcd ='';
-   variable = '';
-  constructor() { }
 
-  posthere()
+title="myproject";
+post={};
+postlist=[];
+comm={};
+addcomment=[];
+
+mypost()
+{
+  if(this.post!='')
   {
-    const node = {
-       'data':this.abcd,
-       'like':0,
-       'dislike':0,
-       'comcount':0,
-       'comm':[]
-    };
-
-    this.values.splice(0,0,node);
-    this.abcd = '';
+  const pobj={};
+  pobj['post']=this.post;
+  pobj['like']=0;
+  pobj['dislike']=0;
+  pobj['postlist']=this.postlist;
+  this.postlist.splice(0,0,pobj);
+ }
+  else
+  {
+    alert("empty")
   }
-     
-
-     comment(temp){
-       temp.comm.splice(0,0,this.variable);
-       this.variable = '';
-       temp.comcount += 1;
-        
-
-     }
-
-     deletecomm(temp){
-       //let index = this.comm.indexOf(temp);
-        //  this.comm.splice(index,1);
-          
-
-     }
-     delete(temp){
-          let index = this.values.indexOf(temp);
-          this.values.splice(index,1);
-          
-
-     }
-     edit(temp){
-      
-          
-
-
-
-
-     }
-     
-     decreaselike(temp){
-          temp.dislike += 1;
-
-     }
-     increaselike(temp){
-         temp.like += 1;
-     }
+  this.post='';
 
 }
+
+likecount(item){
+  item.like += 1;
+}
+
+dislikecount(item){
+  item.dislike += 1;
+}
+
+comment(com1){
+  if(this.comm!=''){
+  const cobj={};
+   cobj['comm']=this.comm;
+  this.addcomment.splice(0,0,cobj);
+  }else{
+   alert("write something");
+  }
+  this.comm='';
+}
+
+delete(item){
+  let position=this.postlist.indexOf(item);
+  this.postlist.splice(position,1)
+}
+
+deletecomment(com1){
+  let position=this.addcomment.indexOf(com1);
+  this.addcomment.splice(position,1)
+}
+ 
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+
+
+
