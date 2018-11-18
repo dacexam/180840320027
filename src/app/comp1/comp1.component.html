@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <div class="row " style="height:50px;background:rgb(191, 201, 191); ">
+    <div class="col-2 make-center beautify">{{title}}</div>
+    <div class="col-8 make-center">
+      <input [(ngModel)]="post" type="text" class="form form-control " placeholder="write something....">
+    </div>
+    <div class="col-2 make-center">
+      <button (click)="postdata()" type="button" class="btn btn-secondary">post here</button>
+    </div>
+  </div>
+</div>
+
+<!--post-->
+<div class="container-fluid mt-1" *ngIf = " postlist.length>0">
+  <div class="row" *ngFor="let item of postlist">
+    <div class="col-2"></div>
+    <div class="col-8 ">
+      <div class="card">
+        <div class="card-body make-center" style="min-height:150px">
+          {{item.post}}
+        </div>
+        <div class="card-footer">
+          <div>
+            <button (click)="likecounter(item)" type="button" class="btn btn-secondary mr-1">like
+              <span class="badge badge-light">{{item.like}}</span>
+            </button>
+            <button (click)="dislikecounter(item)" type="button" class="btn btn-secondary mr-1">dislike
+              <span class="badge badge-light">{{item.dislike}}</span>
+            </button>
+            <button type="button" class="btn btn-secondary mr-1">comment
+              <span class="badge badge-light">{{item.comment}}</span>
+            </button>
+            <button (click)="deletepost(item)" type="button" class="btn btn-secondary mr-1">delete post
+            </button>
+            <button (click)="editpost(item)" type="button" class="btn btn-secondary mr-1">edit post
+            </button>
+          </div>
+
+           <div class=" mt-1">
+              <input [(ngModel)]="item.comments" type="text" class="form form-control " placeholder="write something....">
+              <button (click)="postcomment(item)" type="button" class="mt-1 btn btn-secondary">post comment</button>
+              <div class="row mt-1" *ngFor="let item1 of item.Arraylist" >
+                <div class="col-12">
+                    <button (click)="deletecomment(item1,item)" type="button" class="mr-1 btn btn-secondary">delete comment </button>
+                    <button (click)="editcomment(item1,item)" type="button" class="btn btn-secondary">edit comment</button>
+                  {{item1}}
+                </div>
+              </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>
+
+<div class="container-fluid mt-1" *ngIf = " postlist.length==0">
+  <div class="row" style="height:100px">
+    <div class="col-2"></div>
+    <div class="col-8  make-center rounded"  style="background:rgb(191, 201, 191);font-size:30px">
+      No post available
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>
