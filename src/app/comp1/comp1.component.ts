@@ -35,7 +35,7 @@ delete(i){
 }
 
 
-edit(){
+edit(i){
   i.edited = this.edited;
 }
 
