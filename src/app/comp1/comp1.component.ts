@@ -1,53 +1,58 @@
 import { Component, OnInit } from '@angular/core';
+import { isNgTemplate } from '@angular/compiler';
 
 @Component({
   selector: 'app-comp1',
   templateUrl: './comp1.component.html',
   styleUrls: ['./comp1.component.css']
 })
-export class Comp1Component  {
-  title="Mumbai Darshan";
-  post='';
-  postList=[];
+export class Comp1Component {
 
-  postHere(){
-    const postObject={};
-    postObject['Like']=0;
-    postObject['Dislike']=0;
-    postObject['Comment']=0;
-    postObject['post']=this.post;
+    post='';
+    postList=[];
+    upd='';
+    comm='';
+    
 
-    this.postList.splice(0,0,postObject);
-    this.post='';
-  }
-  comment='';
-  commentList=[];
+    postHere(){
+      const postObject={};
+      postObject['post']= this.post;
+      postObject['like']=0;
+      postObject['dislike']=0;
 
-  postComment(item){
-    const commentObject={};
-    commentObject['comment']=this.comment;
-    item.Comment+=1;
-    this.comment='';
+      let comment=[];
+      postObject['cc']=0;
+      postObject['comment']=comment;
 
-  }
+      if(this.post != '')
+      {
+        this.postList.splice(0,0,postObject);
+        this.post='';
+      }
+ 
+      
+    }
 
-  Like(item){
-    item.Like+=1;
-  }
-  Dislike(item){
-    item.Dislike+=1;
-  }
-  Delete(item){
-    let index=this.postList.indexOf(item);
-    this.postList.splice(index,1);
-  }
-  Edit(item){
-    this.post=item.post;
+    countLike(item){
+      item.like+=1;
+    }
+    countDislike(item){
+      item.dislike+=1;
+    }
 
-  }
+    deletePost(item){
+      let x=this.postList.indexOf(item);
+      this.postList.splice(x,1);
+    }
+    updatePost(item){
+      item.post=item.upd;
+      item.upd= '';
+    }
 
-
-
-
+    commentHere(item){
+      item.comment.splice(0,0,this.comm);
+      item.cc+=1;
+      this.comm='';
+    }
 
 }
