@@ -1,79 +1,89 @@
 import { Component, OnInit } from '@angular/core';
+import { post } from 'selenium-webdriver/http';
 
 @Component({
   selector: 'app-comp1',
   templateUrl: './comp1.component.html',
   styleUrls: ['./comp1.component.css']
 })
-export class Comp1Component {
-title = 'Instagram';
-postList=[];
-  post='';
-  comm='';
+export class Comp1Component implements OnInit {
 
-  postNow(){
+    title='DACBOOK'
+    post='';
+    edit='';
+    editcomm='';
+    comment='';
+    postList=[];
 
-    const postObject = {
+    postHere(){
 
-      'post' : this.post,
-      'like' : 0,
-      'dislike' : 0,
-      'comm' : '',
-      'comment' : [],
+      let postobj={
+
+        'post':this.post,
+        'like':0,
+        'dislike':0,
+        'comment':[],
+      
+        
+        
+      
+      
+  
+      };
+      this.postList.splice(0,0,postobj);
+      this.post="";
+      
+      if(this.post=='')
+      {
+          return;
       }
+      else{
     
-   if(this.post == '')
-   {
-     alert("Insert Message");
-   }
-   else{
-    this.postList.splice(0,0,postObject);
+       
+        this.post="";
+      }
 
-   }
+      if(this.edit=='')
+      {
+        return;
+      }
+      else
+      {
+
+      }
+
+      if(this.editcomm=='')
+    {
+        return;
+    }
+    else
+    {
     
-    this.post='';
-  }
+    }
 
-  likeCount(item){
-
-    item.like +=1;
-  }
-
-  dislikeCount(item){
-
-    item.dislike +=1;
-  }
-
-  commentHere(item){
-    item.comment +=1;
-    item.comment.push(this.comm);
-    this.comm='';
-
-  }
-
-  edittext1='';
-
-  editPost(item){
-
-    let index=item.indexOf(item);
-    item.splice(index,1,this.edittext1);
-  }
-
-  deletecom(item,item1){
-
-    let index=item.comment.indexOf(item1);
-    item.comment.splice(index,1);
+    if(this.comment=='')
+    {
+        return;
+    }
   }
   
-  edittext='';
+      like(ref){
+        ref.like+=1;
+      }
 
-  edit(item,item1){
+      dislike(ref)
+      {
+        ref.dislike+=1;
+      }
+      delete(ref)
+      {
 
-    let index=item.comment.indexOf(item1);
-    item.comment.splice(index,1,this.edittext);
+      }
+     
+    
+  constructor() { }
+
+  ngOnInit() {
   }
-    delete(item){
-    this.postList.splice(this.postList.indexOf(item),1);
-}
-}
 
+}
