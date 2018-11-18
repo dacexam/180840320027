@@ -5,53 +5,49 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './comp1.component.html',
   styleUrls: ['./comp1.component.css']
 })
-export class Comp1Component  {
+export class Comp1Component {
 
-  title='CdacBook';
-  postlist=[];
-  post='';
-  commentvar='';
-   
-  
+  title = 'Angular';
+  post = '';
+  postList = [];
+  comm = '';
+  comment = [];
+  editedPost = '';
 
-  Posttext()
-  {
-    if(this.post=='')
-    return;
-    const ref={};
+  postHere(){
+    const postObject = {};
+    postObject['like'] = 0;
+    postObject['dislike'] = 0;
+    postObject['post'] = this.post;
+    postObject['comment'] = this.comment;
 
-    ref['like']=0;
-    ref['dislike']=0;
-    ref['post']=this.post;
-
-    const comment=[];
-
-    ref['comment']=comment;
-    this.postlist.splice(0,0,ref);
-    this.post='';
-  }
- 
-  EditPost(item)
-  {
-    item.post=this.post;
-    this.post='';
+    this.postList.splice(0, 0, postObject);
+    this.post = '';
   }
 
-  DeletePost(item)
-  {
-      this.postlist.splice((this.postlist.indexOf(item)),1);
+  likeCount(item){
+    item.like += 1;
   }
 
-  likecount(item)
-  {
-      item.like+=1;
+  dislikeCount(item){
+    item.dislike += 1; 
   }
 
-  dislikecount(item)
-  {
-    item.dislike+=1;
+  editPost(item){
+    item.post = this.editedPost;
+    this.editedPost = '';
   }
 
-  
+  deleteP(item){
+    let index = this.postList.indexOf(item);
+    this.postList.splice(index,1);
+  }
+
+  commentHere(cont){
+    const com1 = {};
+    com1['comm'] = this.comm;
+    this.comment.splice(0,0,com1);
+    this.comm = '';
+  }
 
 }
