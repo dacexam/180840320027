@@ -1,7 +1,7 @@
 <div class="container-fluid sticky-top ">
    <div class="row bg-secondary" style="height:55px">
       <div class="col-3 make-left text-light">
-          {{FACEBOOK}}
+          {{title}}
       </div>
    
        <div class="col-6 make-center ">
@@ -16,7 +16,7 @@
 
 <div class="container fluid"  *ngIf="postlist.length>0">
     
-    <div class="row mt-1"  *ngfor="let item of postobject">
+    <div class="row mt-1"  *ngFor="let item of postlist">
          <div class="col-3">
 
          </div>
@@ -30,7 +30,7 @@
                   </div>
                 </div>
                 <div class="row">
-                <input [(ngmodel)] ="editedpost" type="text" class="form form-control-lg">
+                <input [(ngModel)] ="editedpost" type="text" class="form form-control-lg">
                  <button (click)="editpost(item)" type="button" class="btn btn-sm btn-danger">
                      EDIT
                   </button>
