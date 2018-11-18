@@ -1,15 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { FormsModule} from '@angular/forms';
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { Comp7Component } from './comp7/comp7.component';
+import { Comp1Component } from './comp1/comp1.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    Comp7Component
+    Comp1Component
   ],
   imports: [
     BrowserModule,
@@ -18,8 +16,4 @@ import { Comp7Component } from './comp7/comp7.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-title= '';
-
-
-}
+export class AppModule { }

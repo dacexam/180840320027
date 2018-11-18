@@ -1,0 +1,74 @@
+<div class="container-fluid sticky-top">
+    <div class="row bg-dark" style="height:55px">
+        <div class="col-3 make-left text-light beautify" >
+           {{title}}
+        </div>
+           <div class="col-6 make-center ">
+              <input [(ngModel)]="post" type="text" placeholder="Say Something.." class="form form-control form-control large">   
+              <button (click)="postHere()" type="button" class=" ml-3 btn btn-sm btn-secondary">
+                   Post Here
+              </button>
+         </div>
+         <div class="col-3">
+          
+        </div>
+    </div>
+
+</div>
+  
+
+<div class="container-fluid mb-2 " *ngIf="postList.length>0" >
+  <div class="row mb-5 "  style="height:55px" *ngFor=" let item of postList">
+      <div class="col-3 make-left" >
+      
+      </div>
+         <div class="col-6 ">
+             <div class ="card" style="height:100px" >
+                <div class =" card-body bg-secondary make-center fontify rounded" >
+                     <a class="card-title text-light">
+                          {{item.post}}
+                     </a>
+                </div>
+                <div class ="card-footer">
+                   <a (click)="likeCount(item)"  class="btn btn-secondary text-light">Like
+                       <span class="badge badge-sm " >{{item.like}}</span>
+                   </a>
+                   <a (click)="dislikeCount(item)"  class="btn ml-1 btn-secondary text-light">Dislike
+                      <span class="badge badge-sm " >{{item.dislike}}</span>   
+                   </a>
+                  <a (click)="postComment(item)"  class="btn ml-1 btn-secondary text-light">Comment
+                      <span class="badge badge-sm " >{{item.Comment}}</span>
+                  </a> 
+                </div>
+             </div> 
+            
+       </div>
+       <div class="col-3">
+        
+      </div>
+  </div>
+
+</div>
+
+
+
+<div class="container-fluid " *ngIf="postList.length==0">
+      <div class="row mt-1 rounded " >
+        <div class="col-3 make-left" >
+        
+        </div>
+           <div class="col-6 make-center text-light bg-secondary fontify" style="height:150px">
+                 No Any Post  
+               </div> 
+          <div class="col-3">
+          
+                </div>   
+               
+         </div>
+         
+    </div>
+  
+  
+  
+  
+

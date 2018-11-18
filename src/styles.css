@@ -1,26 +1,32 @@
-@import '../node_modules/bootstrap/dist/css/bootstrap.css';
+/* You can add global styles to this file, and also import other style files */
+ @import "../node_modules/bootstrap/dist/css/bootstrap.css";
 
-
-.make-center{
-
-display: flex;
-justify-content: center;
-align-items: center;
-
+ .make-center
+{    
+    display:flex; 
+    justify-content: center;
+    align-items: center
 }
 
-.make-left{
- 
-    display: flex;
-    justify-content: left;
-    align-items: center;
+.make-left
 
+
+{
+    display:flex;
+    justify-content: start;
+    align-items: center
 }
 
-.beautify{
+.fontify
+{
+    font-size:20px;
+    font-family:monospace; 
+}
 
-    font-style: italic;
-    font-size: 20px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.beautify
+{
+   font-size:40px;
+   color: ghostwhite;
+   background: black;
 
 }
