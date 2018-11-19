@@ -1,0 +1,122 @@
+
+
+<!--header -->
+
+<div class="container-fluid sticky-top">
+    <div class="row bg-dark header-style ">
+      <div class="col-2  ml-2"> 
+      <div class="row fontify">
+       <span class="text-light">{{title}} </span>      
+      </div>
+      <div class="row ml-3">
+        <span style="color:orange;font-size: 25px">{{title1}}</span>
+      </div>
+      </div>
+      <div class="col-7 ml-4 make-center">
+        <input  type="text" [(ngModel)]="post" class="form mr-3 ml-3  form-control" placeholder="Write Something to post on wall">
+        <button class="ml-2 btn " (click) = 'postHere()'>Post Something</button>
+      </div>
+      <div class="col-2 ml-4 make-center ">
+        <a href="#" style="color:aliceblue;font-size:25px;">James </a>
+      </div>
+    </div>
+  </div>
+  
+<!--body -->
+
+<!--IF-->
+<div class="container-fluid" *ngIf = "postList.length == 0">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6 mt-1 make-center height-100 bg-gray">
+      Post Something    
+    </div>          
+    <div class="col-3"></div>    
+  </div>
+</div>
+
+<!--ELSE-->
+<div class="container-fluid" *ngIf="postList.length > 0">
+  <div class="row" *ngFor="let item of postList">
+    <div class="col-3"></div>
+
+    <div class="col-6 mt-1">
+      <div class=" card">
+        
+        <div class="card-header ">                
+          <div class="row">
+        
+            <div class="col-9">
+              <div>{{username}} </div>                 
+            </div>
+        
+            <div class="col-3">
+              <div><a href="#" (click) = 'deletePost(item)'>Delete Post</a></div>
+<!--
+            <select>
+              <option value="" >-- Select --</option>
+              <option value="" (click) = 'deletePost(item)'>Delete Post</option>
+              <option value="" (click) = 'editPost(item)'>Edit Post</option>
+            </select>
+-->
+            </div>
+          </div>
+        </div>
+        
+        <div class="card-body">
+          <div class="make-center height fontify">
+            {{item.post}}
+          </div>                
+        </div>
+        
+        <div class="card-footer">          
+          <div class="row">
+           
+            <div class="col-2 make-center">
+              <a href="#" (click)="likeCount(item)" class="btn btn-secondary">LIKE <span class="badge badge-light">{{item.like}}</span></a>
+            </div>
+
+            <div class="col-2 make-center">
+              <a href="#" (click)="dislikeCount(item)" class="btn btn-secondary">DISLIKE <span class="badge badge-light">{{item.dislike}}</span></a>
+            </div>
+
+            <div class="col-6 make-center">
+              <input type="text" [(ngModel)] = "comment"  class="form form-control">                 
+            </div>
+
+            <div class="col-2 make-center">
+              <a href="#" (click)="commentHere(item,comment)" class="btn btn-secondary">Comment </a>  
+            </div>
+          </div>
+
+          <!-- COMMENT POST AREA -->
+          <div style="max-height:100px;overflow-y: visible ;overflow-x: hidden">
+            <div class="mt-1" *ngFor = "let item1 of item.commentsList" >
+              <span class="bg-light">{{item1.comment}}  </span>  &nbsp; &nbsp; 
+              <span><a href="#" (click)="commentLikeCount(item1)">👍</a>{{item1.commentLike}}</span> &nbsp; &nbsp;
+              <span><a href="#" (click)="commentDisLikeCount(item1)">👎</a>{{item1.commentDisLike}}</span> &nbsp; &nbsp;
+              <!--  <span><a href="#" (click)="editComment(item1)">Edit</a></span> &nbsp; &nbsp;-->
+              <span><a href="#" (click)="deleteComment(item,comment)">Delete</a></span> &nbsp; &nbsp;
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+      
+    <div class="col-3"></div>
+  </div>
+
+</div>
+
+
+<!--footer-->
+<div>
+    <div class="row">
+      <div class=" bg-dark col-12 footer-style ">
+          <span class="make-right mr-4">Dhiraj Hargode</span>
+        &copy;The Greatest gift of life is FRIENDSHIP  and I have received it. <br>
+        Wish you best for your bright future ...!!!
+      </div>   
+    </div>
+</div>

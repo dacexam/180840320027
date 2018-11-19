@@ -1,54 +1,28 @@
-<div class="container-fluid sticky-top">
 
-
-  <div class="row bg-dark">
-    <div class="col-3 make-left fb bg-dark">
-      chatbot
+<div class="containter-fluid ">
+ <div class="row bg-info height-60">
+    <div class="col-2 ml-2 make-left">
+        title
     </div>
-    <div class="col-6 make-center">
-    <input [(ngModel)]="post" class="form form-control form-control-lg" type="text" placeholder="How do you do..?">
+    <div class="col-7">
+      <input type="text" class="form form-control make-center" [(ngModel)] = "postValue" >
     </div>
-    <div class="col-3 make-center" (click)="function(i)">
-        <button class="btn btn-lg" style="font-weight:bold">POST</button>
-    </div>
-  </div>
-
+    <div class="col-3">
   
-  <div class="row" *ngFor="let i of array" >
-    <div class="col-3"></div>
-    <div class="col-6 bg-light rounded mt-2  fb " style="height:400px">
-      
-        <div class="row make-center bg-dark "style="height:20%"> {{i.post}}
-        </div>
-        
-         <div style=" border: 10px ">
-        
-           <div class="row mt-1"  style="height:20% ">
-              <div class="col-4 make-center" (click)="likeCount(i)"><button class="btn btn-block btn-lg">LIKE <span class="badge badge-secondary">{{i.like}}</span></button></div>
-              <div class="col-4 make-center" (click)="dislikeCount(i)"><button class="btn btn-block btn-lg">DISLIKE <span class="badge badge-secondary">{{i.dislike}}</span></button></div>
-              <div class="col-4 make-center" (click)="delete(i)"><button class="btn btn-block btn-lg">DELETE {{i.delete}}</button></div>
-           </div>  
-       
-          <div class="row mt-1" style="height: 20%;">
-              <div class="col-4 make-center" (click)="update(i)"><button class="btn btn-block btn-lg">UPDATE</button></div>
-              <div class="col-8 make-center"><input [(ngModel)]="i.newupdate" class="form form-control form-control-lg" type="text" placeholder="Update post. . ."></div>
-          </div>
-          <div class="row mt-1" style="height:20%">
-              <div class="col-4 make-center" (click)="comment(i)"><button class="btn btn-block btn-lg">COMMENT</button></div>
-              <div class="col-8 make-center"><input [(ngModel)]="cpost" class="form form-control form-control-lg" type="text" placeholder="express your feelings..!"></div>
-          </div>
-   <div style="overflow-y: scroll;height:60px">
-          <div class="row mt-2 ml-4" style="height:20%; font-size: 20px; color: rgb(117, 104, 104); " *ngFor="let ii of i.countList">
-              {{ii}}
-          </div>
-  </div>
-        </div>
     </div>
-    <div class="col-3"></div>
-  </div>
-  
-
- 
-
+ </div>
 </div>
 
+<div class="containter-fluid ">
+    <div class="row height-60 mt-1">
+       <div class="col-2 ml-2 make-left">
+           
+       </div>
+       <div class="col-7 bg-secondary">
+        sada
+       </div>
+       <div class="col-3">
+     
+       </div>
+    </div>
+   </div>
